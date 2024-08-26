@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Faust</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FaustWeb.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav id="side-nav" class="side-nav">
+
+            <div class="cover" onclick="closeNav()"> </div>
+            <div class="nav-button-container" id="buttons-container">
+
+                <div class="nav-button-group" style="margin-bottom:30px;">
+                    <a href="/" class="nav-faust-group">
+                        <img class="faust-icon" src="~/icons/Faust.svg" alt="Faust icon" />
+                        <span class="nav-link" style="font-weight:normal;">FAUST · ФАУСТ</span>
+                    </a>
+                </div>
+
+                <div class="nav-button-group">
+                    <a href="/" class="nav-icon-group">
+                        <img class="nav-icon" src="~/icons/Main.svg" alt="Main page icon" />
+                        <span class="nav-link">Головна</span>
+                    </a>
+                </div>
+
+                <div class="nav-button-group">
+                    <div class="nav-icon-group">
+                        <a class="nav-link-container" href="/">
+                            <img class="nav-icon" src="~/icons/Library.svg" alt="Library page icon" />
+                            <span class="nav-link">Бібліотека</span>
+                        </a>
+                        <span id="lib-context-button" class="nav-dropdown" onclick="toggleLibraryContext()">></span>
+                    </div>
+                    <div id="library-context" class="nav-sub-menu" style="height:0px;">
+                        <a href="/" class="no-text-decor">
+                            <div class="sub-menu-link">Останні оновлення</div>
+                        </a>
+                        <a href="/" class="no-text-decor">
+                            <div class="sub-menu-link">Фільтр</div>
+                        </a>
+                        <a href="/" class="no-text-decor">
+                            <div class="sub-menu-link">Рандом</div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-button-group">
+                    <div class="nav-icon-group">
+                        <a class="nav-link-container" href="/">
+                            <img class="nav-icon" src="~/icons/AboutFaust.svg" alt="About Faust page icon" />
+                            <span class="nav-link">Про ФАУСТ</span>
+                        </a>
+                        <span id="about-context-button" class="nav-dropdown" onclick="toggleAboutContext()">></span>
+                    </div>
+                    <div id="about-us-context" class="nav-sub-menu" style="height:0px;">
+                        <a href="/" class="no-text-decor"><div class="sub-menu-link">Правила сайту</div></a>
+                        <a href="/" class="no-text-decor"><div class="sub-menu-link">Вступ до ФАУСТу</div></a>
+                        <a href="/" class="no-text-decor"><div class="sub-menu-link">Зв'язок з адмінами</div></a>
+                        <a href="/" class="no-text-decor"><div class="sub-menu-link">FAQ</div></a>
+                    </div>
+                </div>
+
+                <div class="settings-group nav-button-group">
+                    <a href="/" class="nav-icon-group">
+                        <img class="nav-icon" src="~/icons/Settings.svg" alt="Settings icon"/>
+                        <span class="nav-link" style="font-weight:400;">Налаштування</span>
+                    </a>
+                </div>
+            </div>
+
+
+        </nav>
+
+        <div class="header-bar">
+            <img src="~/icons/SideBarButton.svg" class="nav-open" onclick="openNav()" alt="Open sidebar button" />
+            
+            <a class="main-faust-group" href="/">
+                <img src="~/icons/Faust.svg" alt="Faust icon" />
+                <div>FAUST · ФАУСТ</div>
+            </a>
+
+            <img class="search" alt="Search button" src="~/icons/Search.svg" />
+            <a href="/">
+                <div class="login-button">
+                    Вхід
+                </div>
+            </a>
+        </div>
+
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
