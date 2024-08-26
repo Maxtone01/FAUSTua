@@ -1,0 +1,223 @@
+﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+.no-text-decor {
+    text-decoration: none;
+}
+
+    .no-text-decor > * {
+        color: white;
+    }
+
+* {
+    color: #FFFFFF;
+    font-family: "Geologica", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.header-bar {
+    width: 100%;
+    height: 70px;
+    position: relative;
+    text-align: center;
+}
+
+.active-link {
+    background-color: #271A47;
+}
+
+.login-button {
+    background-color: #513879;
+    border-radius: 5px;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 30px;
+    margin: auto;
+    height: 40px;
+    line-height: 40px;
+    width: 82px;
+    cursor: pointer;
+}
+
+.main-faust-group {
+}
+
+    .main-faust-group ::deep img {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 80px;
+        margin: auto;
+        width: 50px;
+    }
+
+    .main-faust-group div {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 140px;
+        margin: auto;
+        text-align: center;
+        font-size: 22px;
+        height: 50px;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 50px;
+    }
+
+::deep .search {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 150px;
+    margin: auto;
+    width: 20px;
+    cursor: pointer;
+}
+
+::deep .nav-open {
+    cursor: pointer;
+    width: 29px;
+    height: 29px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 28px;
+    margin: auto;
+}
+
+.side-nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 16px;
+    transition: 0.5s;
+}
+
+    .side-nav .cover {
+        background-color: black;
+        width: calc(100% - 240px);
+        height: 100%;
+        opacity: 0.5;
+        float: right;
+    }
+
+    .side-nav .nav-button-container {
+        background-color: #19102F;
+        overflow-x: hidden;
+        float: left;
+        height: 100%;
+    }
+
+        .side-nav .nav-button-container .nav-button-group {
+            margin-left: 20px;
+            margin-right: 20px;
+            float: none;
+            margin-top: 20px;
+        }
+
+        .side-nav .nav-button-container .settings-group {
+            position: absolute;
+            bottom: 0px;
+            margin-bottom: 18px;
+            border-radius: 5px;
+        }
+
+            .side-nav .nav-button-container .settings-group:hover {
+                background-color: #231B37;
+            }
+
+        .side-nav .nav-button-container .nav-button-group .nav-sub-menu {
+            margin-left: 20px;
+            font-weight: 400;
+            overflow-y: hidden;
+            height: 0px;
+            transition: 0.5s;
+        }
+
+            .side-nav .nav-button-container .nav-button-group .nav-sub-menu .sub-menu-link {
+                border-radius: 5px;
+                padding: 5px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+                .side-nav .nav-button-container .nav-button-group .nav-sub-menu .sub-menu-link:hover {
+                    background-color: #231B37;
+                }
+
+        .side-nav .nav-button-container .nav-button-group .nav-icon-group {
+            display: flex;
+            border-radius: 5px;
+            display: flex;
+            text-decoration: none;
+            width: 200px;
+            position: relative;
+            padding-left: 10px;
+        }
+
+
+        .side-nav .nav-button-container .nav-button-group .nav-faust-group {
+            display: flex;
+            border-radius: 5px;
+            display: flex;
+            text-decoration: none;
+            width: 200px;
+            position: relative;
+        }
+
+        .side-nav .nav-button-container .nav-button-group .nav-icon-group .nav-link-container {
+            display: flex;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        .side-nav .nav-button-container .nav-button-group .nav-icon-group:hover {
+            background-color: #231B37;
+        }
+
+        .side-nav .nav-button-container .nav-button-group .nav-icon-group ::deep .nav-icon {
+            width: 30px;
+            height: 30px;
+            padding-left: 10px;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .side-nav .nav-button-container .nav-button-group .nav-icon-group .faust-icon {
+            margin-top: auto;
+            margin-bottom: auto;
+            width: 38px;
+            height: 32px;
+            padding: 0px;
+        }
+
+        .side-nav .nav-button-container .nav-button-group .nav-link {
+            margin-top: auto;
+            margin-bottom: auto;
+            padding-left: 15px;
+            color: #FFFFFF;
+            white-space: nowrap;
+            width: 100%;
+        }
+
+        .side-nav .nav-button-container .nav-button-group .nav-icon-group .nav-dropdown {
+            float: right;
+            color: #FFFFFF;
+            padding: 10px;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+
+            .side-nav .nav-button-container .nav-button-group .nav-icon-group .nav-dropdown:hover {
+                cursor: pointer;
+            }
