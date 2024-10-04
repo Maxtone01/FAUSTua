@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/FaustWeb.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="css/authentification.css"/>
 </head>
 <body>
     <header>
@@ -32,7 +31,7 @@
 
                 <div class="nav-button-group">
                     <div class="nav-icon-group">
-                        <a class="nav-link-container" href="/">
+                        <a class="nav-link-container" href="/Library">
                             <img class="nav-icon" src="~/icons/Library.svg" alt="Library page icon" />
                             <span class="nav-link">Бібліотека</span>
                         </a>
@@ -75,7 +74,6 @@
                 </div>
             </div>
 
-
         </nav>
 
         <div class="header-bar">
@@ -95,7 +93,7 @@
         </div>
 
     </header>
-    <div class="container">
+    <div class="page-container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

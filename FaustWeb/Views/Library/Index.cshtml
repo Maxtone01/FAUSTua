@@ -1,111 +1,187 @@
 ﻿@{
-    ViewData["Title"] = "Реєстрація";
+    ViewData["Title"] = "Блібліотека";
 }
-<section class="container forms">
-        <div class="form login">
-            <div class="form-content">
-                <label for="show" class="close-btn" title="close">
-                    <img src="icons/x.png">
-                </label>
-                <div style="font-size: 30px; color: white;">Вхід</div>
-                <form action="#">
-                    <div class="field input-field">
-                        <input type="email" placeholder="Емейл" class="input" style="color: #8E8E8E; background-color: #19102f;">
-                    </div>
-                    <div class="field input-field">
-                        <input type="password" placeholder="Пароль" class="password" style="color: #8E8E8E; background-color: #19102f;">
-                        <i class='bx bx-hide eye-icon'></i>
-                    </div>
-                    <div style="text-align: center; margin-top: 20px;">
-                        <div class="forgot-pass" style="color: #8E8E8E;">або</div>
-                    </div>
-                    <div class="media-options">
-                        <a href="#" class="field google" style="text-decoration: none;">
-                            <img src="Icons/google.svg" alt="" class="google-img">
-                            <span>За допомогою Google</span>
-                        </a>
-                    </div>
-                </form>
-                <div class="form-link" style="margin-top: 30px;">
-                    <span>Немає акаунту? <a href="#" class="link signup-link" style="color: #513879;">Створити акаунт</a></span>
+<link rel="stylesheet" href="css/libraryStyle.css">
+<main>
+    <header class="library-header">
+        <div class="header-left">
+            <div class="library-text">
+                <h1 class="logo">Бібліотека (4602)</h1>
                 </div>
-                <div class="forgot-pass">
-                    <a href="#" class="link forgot-pass-link" style="color: #513879; margin-top: 2px;">Забув пароль</a>
+            <div class="library-actions">
+                <select class="sort-dropdown">
+                    <option value="ratings">
+                        <span>Сортувати:</span> 
+                        За оцінками
+                        </option>
+                    <option value="most-readings">
+                        <span>Сортувати:
+                            </span> 
+                        За прочитанням
+                        </option>
+                    </select>
+                <div class="page-controls">
+                    <button class="expand-btn" id="expandDropdown">
+                        <img src="icons/expandView.png">
+                        </button>
+            
+                    <img src="icons/Vector 3.png">
+            
+                    <label class="switch">
+                        <input type="checkbox" id="styleSwitcher">
+                        <span class="slider"></span>
+                        </label>
+                    </div>
                 </div>
-                <div class="field button-field" style="margin-top: 50px;">
-                    <button>Увійти</button>
+            </div>
+        <div class="header-right">
+            <div class="controls">
+                <button class="filter-btn">Фільтри</button>
+                <button class="random-btn">Рандом</button>
                 </div>
+            </div>
+        </header>
+    <section id="layout-wrapper" class="library-grid">
+        <div class="library-item">
+            <div class="img-container">
+                <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+                <div class="top-images">
+                    <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                    <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
+                </div>
+            </div>
+            <div class="manga-info">
+                <h4 class="title">Ще тільки світанок</h4>
+                <p class="small-title">Just twilight</p>
+                <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
             </div>
         </div>
-        <!-- Signup Form -->
-        <div class="form signup">
-            <div class="form-content">
-                <div style="font-size: 30px; color: white;">Реєстрація</div>
-                <form action="#">
-                    <div class="field input-field">
-                        <input type="name" placeholder="Нік" class="input" style="color: #8E8E8E; background-color: #19102f;">
-                    </div>
-                    <div class="field input-field">
-                        <input type="email" placeholder="Емейл" class="input" style="color: #8E8E8E; background-color: #19102f;">
-                    </div>
-                    <div class="field input-field">
-                        <input type="password" placeholder="Пароль" class="password" style="color: #8E8E8E; background-color: #19102f;">
-                    </div>
-                    <div class="field input-field">
-                        <input type="password" placeholder="Повторіть пароль" class="password" style="color: #8E8E8E; background-color: #19102f;">
-                        <i class='bx bx-hide eye-icon'></i>
-                    </div>
-                </form>
-                <div class="form-link">
-                    <span>Маєте акаунт? <a href="#" class="link login-link" style="color: #513879;">Зайти</a></span>
+        <div class="library-item">
+            <div class="img-container">
+                <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+                <div class="top-images">
+                    <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                    <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 20px;">
-                <div class="forgot-pass" style="color: #8E8E8E;">або</div>
-            </div>
-            <div class="media-options">
-                <a href="#" class="field google" style="text-decoration: none;">
-                    <img src="Icons/google.svg" alt="" class="google-img">
-                    <span>За допомогою Google</span>
-                </a>
-            </div>
-            <div class="field button-field">
-                <button>Увійти</button>
+            <div class="manga-info">
+                <h4 class="title">Ще тільки світанок</h4>
+                <p class="small-title">Just twilight</p>
+                <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
             </div>
         </div>
-        <!-- Popup Form -->
-        <div class="form pass-reset-popup">
-            <div class="form-content">
-                <label for="show" class="close-btn" title="close">
-                    <img src="Icons/x.png">
-                </label>
-                <div style="font-size: 30px; color: white; font-size: 24px;">Перевіряйте свою поштову скриньку!</div>
-                <div style="font-size: 30px; color: #878787; margin-top: 30px; font-size: 16px; width: 350px;">Ми надіслали вам 
-                    електронний лист із підтвердженням особи, щоб відновити пароль. Якщо листа немає - перевірте "Спам"</div>
+        <div class="library-item">
+            <div class="img-container">
+                <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+                <div class="top-images">
+                    <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                    <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
+                </div>
+            </div>
+            <div class="manga-info">
+                <h4 class="title">Ще тільки світанок</h4>
+                <p class="small-title">Just twilight</p>
+                <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
             </div>
         </div>
-        <!-- Pass Reset Form -->
-        <div class="form pass-reset">
-            <div class="form-content">
-                <label for="show" class="close-btn" title="close">
-                    <img src="Icons/x.png">
-                </label>
-                <div style="font-size: 30px; color: white; font-size: 24px;">Відновленя паролю</div>
-                <div style="font-size: 30px; color: white; margin-top: 30px; font-size: 16px; width: 350px;">Введіть свій емейл, щоб отримати підтверження на відновлення паролю</div>
-                <form action="#">
-                    <div class="field input-field">
-                        <input type="email" placeholder="Емейл" class="input" style="color: #8E8E8E; 
-                        background-color: #19102f;
-                        border-radius: 15px;
-                        height: 50px;
-                        margin-top: -20px;">
-                    </div>
-                    <div class="field button-field" style="margin-top: 20px;">
-                        <button>Відправити</button>
-                    </div>
-                </form>
+        <div class="library-item">
+            <div class="img-container">
+                <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+                <div class="top-images">
+                    <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                    <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
+                </div>
             </div>
+            <div class="manga-info">
+                <h4 class="title">Ще тільки світанок</h4>
+                <p class="small-title">Just twilight</p>
+                <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
             </div>
+        </div>
+        <div class="library-item">
+            <div class="img-container">
+                <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+                <div class="top-images">
+                    <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                    <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
+                </div>
+            </div>
+            <div class="manga-info">
+                <h4 class="title">Ще тільки світанок</h4>
+                <p class="small-title">Just twilight</p>
+                <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+            </div>
+        </div>
+        <div class="library-item">
+            <div class="img-container">
+                <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+                <div class="top-images">
+                    <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                    <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
+                </div>
+            </div>
+            <div class="manga-info">
+                <h4 class="title">Ще тільки світанок</h4>
+                <p class="small-title">Just twilight</p>
+                <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+            </div>
+        </div>
+        <div class="library-item">
+            <div class="img-container">
+                <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+                <div class="top-images">
+                    <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                    <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
+                </div>
+            </div>
+            <div class="manga-info">
+                <h4 class="title">Ще тільки світанок</h4>
+                <p class="small-title">Just twilight</p>
+                <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+            </div>
+        </div>
+        <div class="library-item">
+            <div class="img-container">
+                <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+                <div class="top-images">
+                    <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                    <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
+                </div>
+            </div>
+            <div class="manga-info">
+                <h4 class="title">Ще тільки світанок</h4>
+                <p class="small-title">Just twilight</p>
+                <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+            </div>
+        </div>
+        <div class="library-item">
+            <div class="img-container">
+                <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+                <div class="top-images">
+                    <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                    <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
+                </div>
+            </div>
+            <div class="manga-info">
+                <h4 class="title">Ще тільки світанок</h4>
+                <p class="small-title">Just twilight</p>
+                <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+            </div>
+        </div>
+        <div class="library-item">
+            <div class="img-container">
+                <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+                <div class="top-images">
+                    <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                    <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
+                </div>
+            </div>
+            <div class="manga-info">
+                <h4 class="title">Ще тільки світанок</h4>
+                <p class="small-title">Just twilight</p>
+                <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+            </div>
+        </div>
     </section>
-    <!-- JavaScript -->
-    <script src="js/sign.js"></script>
+</main>
+<script src="js/styleSwitcher.js"></script>
