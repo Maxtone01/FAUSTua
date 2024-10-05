@@ -1,4 +1,5 @@
 ﻿using FaustWeb.Infrastructure;
+using FaustWeb.SeedData.SeedUsers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -15,6 +16,12 @@ public static class Configurator
 
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
         options.UseSqlServer(connection));
+    }
+
+    public static async Task CreateDefaultIdentityAsync(this WebApplication app)
+    {
+        await app.CreateDefaultRolesAsync();
+        await app.CreateDefaultUsersAsync();
     }
 
     public static void ConfigureIdentity(this IServiceCollection services)
