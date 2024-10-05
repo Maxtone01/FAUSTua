@@ -1,7 +1,6 @@
 using FaustWeb.Application.Services.AuthService;
 using FaustWeb.Domain.DTO.Auth;
 ﻿using FaustWeb.Filters;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FaustWeb.Controllers
@@ -11,7 +10,6 @@ namespace FaustWeb.Controllers
     //[Authorize(Roles = "Admin")]
     [TypeFilter(typeof(ApiControllerExceptionFilter))]
     public class ApiController(IAuthService authService) : ControllerBase
-    public class ApiController : ControllerBase
     {
         [HttpGet("test")]
         [ApiExplorerSettings(GroupName = "Test")]
