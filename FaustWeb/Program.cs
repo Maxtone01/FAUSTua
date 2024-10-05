@@ -4,6 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
+builder.ConfigureDbConnection();
 builder.Services.ConfigureSwagger();
 
 var app = builder.Build();
