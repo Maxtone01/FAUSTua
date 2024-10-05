@@ -31,7 +31,7 @@
 
                 <div class="nav-button-group">
                     <div class="nav-icon-group">
-                        <a class="nav-link-container" href="/Library">
+                        <a class="nav-link-container" href="/library">
                             <img class="nav-icon" src="~/icons/Library.svg" alt="Library page icon" />
                             <span class="nav-link">Бібліотека</span>
                         </a>
@@ -85,7 +85,7 @@
             </a>
 
             <img class="search" alt="Search button" src="~/icons/Search.svg" />
-            <a href="/Authentication">
+            <a href="/authentication">
                 <div class="login-button">
                     Вхід
                 </div>
@@ -102,6 +102,8 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="js/styleSwitcher.js"></script>
+    <script src="js/sign.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

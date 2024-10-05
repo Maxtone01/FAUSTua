@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FaustWeb.Controllers;
 
+[Route("authentication")]
 public class AuthenticationController : Controller
 {
-    public IActionResult Index()
+    [HttpGet]
+    public async Task<IActionResult> Auth()
     {
         return View();
     }
