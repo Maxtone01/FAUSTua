@@ -47,3 +47,20 @@ function toggleAboutContext() {
         aboutContextButton.textContent = ">";
     }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    submitLogin();
+    submitRegister();
+
+    function submitLogin() {
+        document.getElementById('submitLogin').addEventListener('click', function () {
+            document.getElementById('loginForm').submit();
+        });
+    }
+
+    function submitRegister() {
+        document.getElementById('submitRegister').addEventListener('click', function () {
+            document.getElementById('registerForm').submit();
+        });
+    }
+});

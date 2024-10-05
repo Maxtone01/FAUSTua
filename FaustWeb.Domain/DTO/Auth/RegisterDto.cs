@@ -17,6 +17,6 @@ public class RegisterDto
 
     [Required(ErrorMessage = "Repeat password")]
     [DataType(DataType.Password)]
-    [Compare("Password", ErrorMessage = "Password and confirmation password do not match.")]
+    [Compare("Password", ErrorMessage = "Password and confirmation password do not match")]
     public string RepeatPassword { get; set; } = string.Empty;
 }

@@ -5,8 +5,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.ConfigureDbConnection();
+builder.Services.RegisterServices();
 builder.Services.ConfigureIdentity();
+builder.Services.ConfigureAuth();
 builder.Services.ConfigureSwagger();
+
+builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 
@@ -28,6 +32,7 @@ app.UseSwaggerUI(c =>
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

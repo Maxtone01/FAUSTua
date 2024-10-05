@@ -28,6 +28,8 @@ public static class CreateDefaultUsersExtension
                 var errors = string.Join(", ", adminResponse.Errors.Select(e => e.Description));
                 throw new Exception($"Failed to create admin: \n{errors}");
             }
+
+            await userManager.AddToRoleAsync(admin, DefaultRoles.Admin);
         }
 
         if (defaultUser == null)
@@ -44,6 +46,8 @@ public static class CreateDefaultUsersExtension
                 var errors = string.Join(", ", userResponse.Errors.Select(e => e.Description));
                 throw new Exception($"Failed to create user: \n{errors}");
             }
+
+            await userManager.AddToRoleAsync(user, DefaultRoles.User);
         }
     }
 }
