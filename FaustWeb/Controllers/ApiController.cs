@@ -1,5 +1,6 @@
-﻿using FaustWeb.Application.Services.AuthService;
+using FaustWeb.Application.Services.AuthService;
 using FaustWeb.Domain.DTO.Auth;
+﻿using FaustWeb.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,7 +9,9 @@ namespace FaustWeb.Controllers
     [Route("api")]
     [ApiController]
     //[Authorize(Roles = "Admin")]
+    [TypeFilter(typeof(ApiControllerExceptionFilter))]
     public class ApiController(IAuthService authService) : ControllerBase
+    public class ApiController : ControllerBase
     {
         [HttpGet("test")]
         [ApiExplorerSettings(GroupName = "Test")]
@@ -16,7 +19,13 @@ namespace FaustWeb.Controllers
         {
             return Ok();
         }
-
+        
+        [HttpGet("test-filter")]
+        [ApiExplorerSettings(GroupName = "Test")]
+        public IActionResult TestFilter()
+        {
+            throw new NotImplementedException();
+        }
 
         [HttpGet("login")]
         [ApiExplorerSettings(GroupName = "Auth")]
