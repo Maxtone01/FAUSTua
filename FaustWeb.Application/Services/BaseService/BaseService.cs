@@ -4,7 +4,7 @@ using FaustWeb.Infrastructure.Repositories.BaseRepository;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace FaustWeb.Application.BaseService;
+namespace FaustWeb.Application.Services.BaseService;
 
 public class BaseService<T>(IBaseRepository<T> baseRepository) : IBaseService<T> where T : class
 {

@@ -19,6 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FaustWeb.Application\FaustWeb.Application.csproj" />
+    <ProjectReference Include="..\FaustWeb.Domain\FaustWeb.Domain.csproj" />
     <ProjectReference Include="..\FaustWeb.Infrastructure\FaustWeb.Infrastructure.csproj" />
   </ItemGroup>
 

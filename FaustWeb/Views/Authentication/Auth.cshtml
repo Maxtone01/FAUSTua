@@ -1,8 +1,10 @@
-﻿@{
+﻿@using FaustWeb.Domain.DTO.Auth
+@model AuthDto
+
+@{
     ViewData["Title"] = "Реєстрація";
 }
 
-<link rel="stylesheet" href="css/authentification.css"/>
 <section class="container forms">
         <div class="form login">
             <div class="form-content">
@@ -10,14 +12,16 @@
                     <img src="icons/x.png">
                 </label>
                 <div style="font-size: 30px; color: white;">Вхід</div>
-                <form action="#">
+                <form id="loginForm" action="authentication" method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
                     <div class="field input-field">
-                        <input type="email" placeholder="Емейл" class="input" style="color: #8E8E8E; background-color: #19102f;">
+                        <input type="email" asp-for=Login.Email placeholder="Емейл" class="input" style="color: #8E8E8E; background-color: #19102f;">
                     </div>
                     <div class="field input-field">
-                        <input type="password" placeholder="Пароль" class="password" style="color: #8E8E8E; background-color: #19102f;">
+                        <input type="password" asp-for=Login.Password placeholder="Пароль" class="password" style="color: #8E8E8E; background-color: #19102f;">
                         <i class='bx bx-hide eye-icon'></i>
                     </div>
+                    <input asp-for=IsRegistration value="@false" hidden />
                     <div style="text-align: center; margin-top: 20px;">
                         <div class="forgot-pass" style="color: #8E8E8E;">або</div>
                     </div>
@@ -35,7 +39,7 @@
                     <a href="#" class="link forgot-pass-link" style="color: #513879; margin-top: 2px;">Забув пароль</a>
                 </div>
                 <div class="field button-field" style="margin-top: 50px;">
-                    <button>Увійти</button>
+                    <button type="button" id="submitLogin">Увійти</button>
                 </div>
             </div>
         </div>
@@ -43,20 +47,22 @@
         <div class="form signup">
             <div class="form-content">
                 <div style="font-size: 30px; color: white;">Реєстрація</div>
-                <form action="#">
+                <form id="registerForm" action="authentication" method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
                     <div class="field input-field">
-                        <input type="text" placeholder="Нік" class="input" style="color: #8E8E8E; background-color: #19102f;">
+                        <input type="text" asp-for=Register.Nickname placeholder="Нік" class="input" style="color: #8E8E8E; background-color: #19102f;">
                     </div>
                     <div class="field input-field">
-                        <input type="email" placeholder="Емейл" class="input" style="color: #8E8E8E; background-color: #19102f;">
+                        <input type="email" asp-for=Register.Email placeholder="Емейл" class="input" style="color: #8E8E8E; background-color: #19102f;">
                     </div>
                     <div class="field input-field">
-                        <input type="password" placeholder="Пароль" class="password" style="color: #8E8E8E; background-color: #19102f;">
+                        <input type="password" asp-for=Register.Password placeholder="Пароль" class="password" style="color: #8E8E8E; background-color: #19102f;">
                     </div>
                     <div class="field input-field">
-                        <input type="password" placeholder="Повторіть пароль" class="password" style="color: #8E8E8E; background-color: #19102f;">
+                        <input type="password" asp-for=Register.RepeatPassword placeholder="Повторіть пароль" class="password" style="color: #8E8E8E; background-color: #19102f;">
                         <i class='bx bx-hide eye-icon'></i>
                     </div>
+                    <input type="hidden" asp-for="IsRegistration" value="true" />
                 </form>
                 <div class="form-link">
                     <span>Маєте акаунт? <a href="#" class="link login-link" style="color: #513879;">Зайти</a></span>
@@ -72,7 +78,7 @@
                 </a>
             </div>
             <div class="field button-field">
-                <button>Увійти</button>
+                <button type="button" id="submitRegister">Зареєструватись</button>
             </div>
         </div>
         <!-- Popup Form -->
@@ -109,4 +115,3 @@
             </div>
         </div>
 </section>
-    

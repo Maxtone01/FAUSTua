@@ -2,7 +2,7 @@
 using FaustWeb.Domain.DTO.Pagination;
 using System.Linq.Expressions;
 
-namespace FaustWeb.Application.BaseService;
+namespace FaustWeb.Application.Services.BaseService;
 
 public interface IBaseService<T> where T : class
 {

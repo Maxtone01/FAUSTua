@@ -1,4 +1,7 @@
-﻿using FaustWeb.Infrastructure;
+﻿using FaustWeb.Application.Services.AuthService;
+using FaustWeb.Infrastructure;
+using FaustWeb.SeedData.SeedUsers;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -17,6 +20,17 @@ public static class Configurator
         options.UseSqlServer(connection));
     }
 
+    public static void RegisterServices(this IServiceCollection services)
+    {
+        services.AddScoped<IAuthService, AuthService>();
+    }
+
+    public static async Task CreateDefaultIdentityAsync(this WebApplication app)
+    {
+        await app.CreateDefaultRolesAsync();
+        await app.CreateDefaultUsersAsync();
+    }
+
     public static void ConfigureIdentity(this IServiceCollection services)
     {
         services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -31,6 +45,16 @@ public static class Configurator
             options.Password.RequireNonAlphanumeric = false;
             options.Password.RequiredLength = 6;
         });
+    }
+
+    public static void ConfigureAuth(this IServiceCollection services)
+    {
+        services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(options =>
+            {
+                options.LoginPath = new PathString("/authentication");
+                options.AccessDeniedPath = new PathString("/authentication");
+            });
     }
 
     public static void ConfigureSwagger(this IServiceCollection services)
