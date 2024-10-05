@@ -17,4 +17,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FaustWeb.Domain\FaustWeb.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
