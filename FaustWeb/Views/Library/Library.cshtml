@@ -1,187 +1,437 @@
 ﻿@{
-    ViewData["Title"] = "Блібліотека";
+ViewData["Title"] = "Блібліотека";
 }
 
 <link rel="stylesheet" href="css/libraryStyle.css">
 <main>
-    <header class="library-header">
-        <div class="header-left">
-            <div class="library-text">
-                <h1 class="logo">Бібліотека (4602)</h1>
-                </div>
-            <div class="library-actions">
-                <select class="sort-dropdown">
-                    <option value="ratings">
-                        <span>Сортувати:</span> 
-                        За оцінками
-                        </option>
-                    <option value="most-readings">
-                        <span>Сортувати:
-                            </span> 
-                        За прочитанням
-                        </option>
-                    </select>
-                <div class="page-controls">
+<header class="library-header">
+    <div class="header-left">
+        <div class="library-text">
+            <h1 class="logo">Бібліотека (4602)</h1>
+        </div>
+        <div class="library-actions">
+            <select class="sort-dropdown">
+                <option value="ratings">
+                    <span>Сортувати:</span>
+                    За оцінками
+                </option>
+                <option value="most-readings">
+                    <span>Сортувати:
+                    </span>
+                    За прочитанням
+                </option>
+            </select>
+            <div class="page-controls">
+                <div>
                     <button class="expand-btn" id="expandDropdown">
                         <img src="icons/expandView.png">
-                        </button>
-            
-                    <img src="icons/Vector 3.png">
-            
-                    <label class="switch">
-                        <input type="checkbox" id="styleSwitcher">
-                        <span class="slider"></span>
+                    </button>
+                </div>
+                    
+                <img src="icons/Vector 3.png">
+
+                <label class="switch">
+                    <input type="checkbox" id="styleSwitcher">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="header-right">
+        <div class="controls">
+            <button class="filter-btn">Фільтри</button>
+            <button class="random-btn">Рандом</button>
+        </div>
+    </div>
+</header>
+
+<section class="m-dropdown" id="m_dropdown">
+    <div class="m-dropdown-item">
+        <div>
+            <b>Жанри</b>
+            <form class="multiselect-form">
+                <div class="multiselect">
+                    <div class="select-box" onclick="showCheckboxes(1)">
+                        <select id="select-box-select-1">
+                            <option>Виберіть теги</option>
+                        </select>
+                        <div class="select-box-over"></div>
+                    </div>
+                    <div class="checkboxes" id="checkboxes-1">
+                        <label for="one-1">
+                            <input type="checkbox" id="one-1"/>
+                            <span class="checkboxes-text">Тег 1</span>
+                        </label>
+                        <label for="two-1">
+                            <input type="checkbox" id="two-1"/>
+                            <span class="checkboxes-text">Тег 2</span>
+                        </label>
+                        <label for="three-1">
+                            <input type="checkbox" id="three-1"/>
+                            <span class="checkboxes-text">Тег 2</span>
                         </label>
                     </div>
                 </div>
-            </div>
-        <div class="header-right">
-            <div class="controls">
-                <button class="filter-btn">Фільтри</button>
-                <button class="random-btn">Рандом</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="m-dropdown-item">
+        <div>
+            <b>Жанри</b>
+            <form class="multiselect-form">
+                <div class="multiselect">
+                    <div class="select-box" onclick="showCheckboxes(2)">
+                        <select id="select-box-select-2">
+                            <option>Виберіть теги</option>
+                        </select>
+                        <div class="select-box-over"></div>
+                    </div>
+                    <div class="checkboxes" id="checkboxes-2">
+                        <label for="one-2">
+                            <input type="checkbox" id="one-2"/>
+                            <span class="checkboxes-text">Тег 1</span>
+                        </label>
+                        <label for="two-2">
+                            <input type="checkbox" id="two-2"/>
+                            <span class="checkboxes-text">Тег 2</span>
+                        </label>
+                        <label for="three-2">
+                            <input type="checkbox" id="three-2"/>
+                            <span class="checkboxes-text">Тег 2</span>
+                        </label>
+                    </div>
                 </div>
-            </div>
-        </header>
-    <section id="layout-wrapper" class="library-grid">
-        <div class="library-item">
-            <div class="img-container">
-                <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
-                <div class="top-images">
-                    <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
-                    <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
+            </form>
+        </div>
+    </div>
+    
+    <div class="m-dropdown-item">
+        <div>
+            <b>Жанри</b>
+            <form class="multiselect-form">
+                <div class="multiselect">
+                    <div class="select-box" onclick="showCheckboxes(3)">
+                        <select id="select-box-select-3">
+                            <option>Виберіть теги</option>
+                        </select>
+                        <div class="select-box-over"></div>
+                    </div>
+                    <div class="checkboxes" id="checkboxes-3">
+                        <label for="one-3">
+                            <input type="checkbox" id="one-3"/>
+                            <span class="checkboxes-text">Тег 1</span>
+                        </label>
+                        <label for="two-3">
+                            <input type="checkbox" id="two-3"/>
+                            <span class="checkboxes-text">Тег 2</span>
+                        </label>
+                        <label for="three-3">
+                            <input type="checkbox" id="three-3"/>
+                            <span class="checkboxes-text">Тег 2</span>
+                        </label>
+                    </div>
                 </div>
-            </div>
-            <div class="manga-info">
-                <h4 class="title">Ще тільки світанок</h4>
-                <p class="small-title">Just twilight</p>
-                <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+            </form>
+        </div>
+    </div>
+    
+    <div class="m-dropdown-item">
+        <div>
+            <b>Жанри</b>
+            <form class="multiselect-form">
+                <div class="multiselect">
+                    <div class="select-box" onclick="showCheckboxes(4)">
+                        <select id="select-box-select-4">
+                            <option>Виберіть теги</option>
+                        </select>
+                        <div class="select-box-over"></div>
+                    </div>
+                    <div class="checkboxes" id="checkboxes-4">
+                        <label for="one-4">
+                            <input type="checkbox" id="one-4"/>
+                            <span class="checkboxes-text">Тег 1</span>
+                        </label>
+                        <label for="two-4">
+                            <input type="checkbox" id="two-4"/>
+                            <span class="checkboxes-text">Тег 2</span>
+                        </label>
+                        <label for="three-4">
+                            <input type="checkbox" id="three-4"/>
+                            <span class="checkboxes-text">Тег 2</span>
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="m-dropdown-item">
+        <div>
+            <b>Жанри</b>
+            <form class="multiselect-form">
+                <div class="multiselect">
+                    <div class="select-box" onclick="showCheckboxes(5)">
+                        <select id="select-box-select-5">
+                            <option>Виберіть теги</option>
+                        </select>
+                        <div class="select-box-over"></div>
+                    </div>
+                    <div class="checkboxes" id="checkboxes-5">
+                        <label for="one-5">
+                            <input type="checkbox" id="one-5"/>
+                            <span class="checkboxes-text">Тег 1</span>
+                        </label>
+                        <label for="two-5">
+                            <input type="checkbox" id="two-5"/>
+                            <span class="checkboxes-text">Тег 2</span>
+                        </label>
+                        <label for="three-5">
+                            <input type="checkbox" id="three-5"/>
+                            <span class="checkboxes-text">Тег 2</span>
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="m-dropdown-item">
+        <div>
+            <b>Жанри</b>
+            <form class="multiselect-form">
+                <div class="multiselect">
+                    <div class="select-box" onclick="showCheckboxes(6)">
+                        <select id="select-box-select-6">
+                            <option>Виберіть теги</option>
+                        </select>
+                        <div class="select-box-over"></div>
+                    </div>
+                    <div class="checkboxes" id="checkboxes-6">
+                        <label for="one-6">
+                            <input type="checkbox" id="one-6"/>
+                            <span class="checkboxes-text">Тег 1</span>
+                        </label>
+                        <label for="two-6">
+                            <input type="checkbox" id="two-6"/>
+                            <span class="checkboxes-text">Тег 2</span>
+                        </label>
+                        <label for="three-6">
+                            <input type="checkbox" id="three-6"/>
+                            <span class="checkboxes-text">Тег 2</span>
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="m-dropdown-item">
+        <div>
+            <b>Жанри</b>
+            <form class="multiselect-form">
+                <div class="multiselect">
+                    <div class="select-box" onclick="showCheckboxes(7)">
+                        <select id="select-box-select-7">
+                            <option>Виберіть теги</option>
+                        </select>
+                        <div class="select-box-over"></div>
+                    </div>
+                    <div class="checkboxes" id="checkboxes-7">
+                        <label for="one-7">
+                            <input type="checkbox" id="one-7"/>
+                            <span class="checkboxes-text">Тег 1</span>
+                        </label>
+                        <label for="two-7">
+                            <input type="checkbox" id="two-7"/>
+                            <span class="checkboxes-text">Тег 2</span>
+                        </label>
+                        <label for="three-7">
+                            <input type="checkbox" id="three-7"/>
+                            <span class="checkboxes-text">Тег 2</span>
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="m-dropdown-item">
+        <div>
+            <b>Жанри</b>
+            <form class="multiselect-form">
+                <div class="multiselect">
+                    <div class="select-box" onclick="showCheckboxes(8)">
+                        <select id="select-box-select-8">
+                            <option>Виберіть теги</option>
+                        </select>
+                        <div class="select-box-over"></div>
+                    </div>
+                    <div class="checkboxes" id="checkboxes-8">
+                        <label for="one-8">
+                            <input type="checkbox" id="one-8"/>
+                            <span class="checkboxes-text">Тег 1</span>
+                        </label>
+                        <label for="two-8">
+                            <input type="checkbox" id="two-8"/>
+                            <span class="checkboxes-text">Тег 2</span>
+                        </label>
+                        <label for="three-8">
+                            <input type="checkbox" id="three-8"/>
+                            <span class="checkboxes-text">Тег 2</span>
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="m-dropdown-item">
+        <button class="apply-btn">Застосувати</button>
+    </div>
+</section>
+
+<section id="layout-wrapper" class="library-grid">
+    <div class="library-item">
+        <div class="img-container">
+            <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+            <div class="top-images">
+                <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
             </div>
         </div>
-        <div class="library-item">
-            <div class="img-container">
-                <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
-                <div class="top-images">
-                    <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
-                    <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
-                </div>
-            </div>
-            <div class="manga-info">
-                <h4 class="title">Ще тільки світанок</h4>
-                <p class="small-title">Just twilight</p>
-                <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+        <div class="manga-info">
+            <h4 class="title">Ще тільки світанок</h4>
+            <p class="small-title">Just twilight</p>
+            <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+        </div>
+    </div>
+    <div class="library-item">
+        <div class="img-container">
+            <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+            <div class="top-images">
+                <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
             </div>
         </div>
-        <div class="library-item">
-            <div class="img-container">
-                <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
-                <div class="top-images">
-                    <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
-                    <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
-                </div>
-            </div>
-            <div class="manga-info">
-                <h4 class="title">Ще тільки світанок</h4>
-                <p class="small-title">Just twilight</p>
-                <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+        <div class="manga-info">
+            <h4 class="title">Ще тільки світанок</h4>
+            <p class="small-title">Just twilight</p>
+            <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+        </div>
+    </div>
+    <div class="library-item">
+        <div class="img-container">
+            <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+            <div class="top-images">
+                <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
             </div>
         </div>
-        <div class="library-item">
-            <div class="img-container">
-                <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
-                <div class="top-images">
-                    <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
-                    <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
-                </div>
-            </div>
-            <div class="manga-info">
-                <h4 class="title">Ще тільки світанок</h4>
-                <p class="small-title">Just twilight</p>
-                <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+        <div class="manga-info">
+            <h4 class="title">Ще тільки світанок</h4>
+            <p class="small-title">Just twilight</p>
+            <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+        </div>
+    </div>
+    <div class="library-item">
+        <div class="img-container">
+            <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+            <div class="top-images">
+                <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
             </div>
         </div>
-        <div class="library-item">
-            <div class="img-container">
-                <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
-                <div class="top-images">
-                    <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
-                    <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
-                </div>
-            </div>
-            <div class="manga-info">
-                <h4 class="title">Ще тільки світанок</h4>
-                <p class="small-title">Just twilight</p>
-                <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+        <div class="manga-info">
+            <h4 class="title">Ще тільки світанок</h4>
+            <p class="small-title">Just twilight</p>
+            <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+        </div>
+    </div>
+    <div class="library-item">
+        <div class="img-container">
+            <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+            <div class="top-images">
+                <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
             </div>
         </div>
-        <div class="library-item">
-            <div class="img-container">
-                <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
-                <div class="top-images">
-                    <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
-                    <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
-                </div>
-            </div>
-            <div class="manga-info">
-                <h4 class="title">Ще тільки світанок</h4>
-                <p class="small-title">Just twilight</p>
-                <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+        <div class="manga-info">
+            <h4 class="title">Ще тільки світанок</h4>
+            <p class="small-title">Just twilight</p>
+            <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+        </div>
+    </div>
+    <div class="library-item">
+        <div class="img-container">
+            <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+            <div class="top-images">
+                <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
             </div>
         </div>
-        <div class="library-item">
-            <div class="img-container">
-                <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
-                <div class="top-images">
-                    <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
-                    <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
-                </div>
-            </div>
-            <div class="manga-info">
-                <h4 class="title">Ще тільки світанок</h4>
-                <p class="small-title">Just twilight</p>
-                <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+        <div class="manga-info">
+            <h4 class="title">Ще тільки світанок</h4>
+            <p class="small-title">Just twilight</p>
+            <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+        </div>
+    </div>
+    <div class="library-item">
+        <div class="img-container">
+            <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+            <div class="top-images">
+                <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
             </div>
         </div>
-        <div class="library-item">
-            <div class="img-container">
-                <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
-                <div class="top-images">
-                    <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
-                    <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
-                </div>
-            </div>
-            <div class="manga-info">
-                <h4 class="title">Ще тільки світанок</h4>
-                <p class="small-title">Just twilight</p>
-                <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+        <div class="manga-info">
+            <h4 class="title">Ще тільки світанок</h4>
+            <p class="small-title">Just twilight</p>
+            <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+        </div>
+    </div>
+    <div class="library-item">
+        <div class="img-container">
+            <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+            <div class="top-images">
+                <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
             </div>
         </div>
-        <div class="library-item">
-            <div class="img-container">
-                <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
-                <div class="top-images">
-                    <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
-                    <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
-                </div>
-            </div>
-            <div class="manga-info">
-                <h4 class="title">Ще тільки світанок</h4>
-                <p class="small-title">Just twilight</p>
-                <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+        <div class="manga-info">
+            <h4 class="title">Ще тільки світанок</h4>
+            <p class="small-title">Just twilight</p>
+            <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+        </div>
+    </div>
+    <div class="library-item">
+        <div class="img-container">
+            <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+            <div class="top-images">
+                <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
             </div>
         </div>
-        <div class="library-item">
-            <div class="img-container">
-                <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
-                <div class="top-images">
-                    <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
-                    <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
-                </div>
-            </div>
-            <div class="manga-info">
-                <h4 class="title">Ще тільки світанок</h4>
-                <p class="small-title">Just twilight</p>
-                <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+        <div class="manga-info">
+            <h4 class="title">Ще тільки світанок</h4>
+            <p class="small-title">Just twilight</p>
+            <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+        </div>
+    </div>
+    <div class="library-item">
+        <div class="img-container">
+            <img src="icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+            <div class="top-images">
+                <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
             </div>
         </div>
-    </section>
+        <div class="manga-info">
+            <h4 class="title">Ще тільки світанок</h4>
+            <p class="small-title">Just twilight</p>
+            <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+        </div>
+    </div>
+</section>
+<script src="js/dropdown.js"></script>
 </main>
