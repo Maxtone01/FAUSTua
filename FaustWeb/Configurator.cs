@@ -1,4 +1,6 @@
 ﻿using FaustWeb.Application.Services.AuthService;
+using FaustWeb.Application.Services.EmailService;
+using FaustWeb.Domain.DTO.Email;
 using FaustWeb.Infrastructure;
 using FaustWeb.SeedData.SeedUsers;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -23,6 +25,7 @@ public static class Configurator
     public static void RegisterServices(this IServiceCollection services)
     {
         services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<IEmailService, EmailService>();
     }
 
     public static async Task CreateDefaultIdentityAsync(this WebApplication app)
@@ -35,7 +38,8 @@ public static class Configurator
     {
         services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
 
         services.Configure<IdentityOptions>(options =>
         {
@@ -45,6 +49,9 @@ public static class Configurator
             options.Password.RequireNonAlphanumeric = false;
             options.Password.RequiredLength = 6;
         });
+
+        services.Configure<DataProtectionTokenProviderOptions>(options =>
+            options.TokenLifespan = TimeSpan.FromHours(1));
     }
 
     public static void ConfigureAuth(this IServiceCollection services)
@@ -55,6 +62,15 @@ public static class Configurator
                 options.LoginPath = new PathString("/authentication");
                 options.AccessDeniedPath = new PathString("/authentication");
             });
+    }
+
+    public static void ConfigureEmail(this WebApplicationBuilder builder)
+    {
+        var config = builder.Configuration
+            .GetSection("EmailConfiguration")
+            .Get<EmailConfiguration>();
+
+        builder.Services.AddSingleton(config);
     }
 
     public static void ConfigureSwagger(this IServiceCollection services)

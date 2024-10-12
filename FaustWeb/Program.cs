@@ -3,14 +3,15 @@ using FaustWeb;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddAutoMapper(typeof(Program));
 
 builder.ConfigureDbConnection();
 builder.Services.RegisterServices();
 builder.Services.ConfigureIdentity();
 builder.Services.ConfigureAuth();
+builder.ConfigureEmail();
 builder.Services.ConfigureSwagger();
-
-builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 
