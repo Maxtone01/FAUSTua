@@ -56,10 +56,12 @@ public class BaseService<T>(IBaseRepository<T> baseRepository) : IBaseService<T>
 
     public IQueryable<T> GetFilteredQuery(IQueryable<T> query, RequestFilterDto<T> filterDto)
     {
-        if (filterDto.SearchTerms != null && filterDto.SearchTerms.Any())
+        if (filterDto.SearchTerms != null && filterDto.SearchTerms.Count != 0)
         {
             foreach (var searchTerm in filterDto.SearchTerms)
+            {
                 query = query.Where(searchTerm);
+            }
         }
 
         if (filterDto.OrderBy != null)

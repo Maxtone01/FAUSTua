@@ -14,9 +14,8 @@ public static class Configurator
 {
     public static void ConfigureDbConnection(this WebApplicationBuilder builder)
     {
-        var connection = builder.Configuration.GetConnectionString("DefaultConnection");
-        if (connection == null)
-            throw new Exception("Connection not set");
+        var connection = builder.Configuration.GetConnectionString("DefaultConnection")
+            ?? throw new Exception("Connection not set");
 
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
         options.UseSqlServer(connection));

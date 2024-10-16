@@ -4,7 +4,7 @@ namespace FaustWeb.Domain.DTO.Email;
 
 public class EmailMessage
 {
-    public List<MailboxAddress> To { get; set; } = new List<MailboxAddress>();
+    public List<MailboxAddress> To { get; set; } = [];
     public string Subject { get; set; } = string.Empty;
     public string Content { get; set; } = string.Empty;
 

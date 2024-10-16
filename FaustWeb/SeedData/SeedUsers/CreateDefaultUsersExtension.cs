@@ -1,4 +1,4 @@
-﻿using FaustWeb.SeedData.DefaultIdentity;
+﻿using FaustWeb.Domain.DefaultIdentity;
 using Microsoft.AspNetCore.Identity;
 
 namespace FaustWeb.SeedData.SeedUsers;

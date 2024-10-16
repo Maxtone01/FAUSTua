@@ -1,8 +1,8 @@
 ﻿using FaustWeb.Application.Services.EmailService;
+using FaustWeb.Domain.DefaultIdentity;
 using FaustWeb.Domain.DTO.Auth;
 using FaustWeb.Domain.DTO.Email;
 using FaustWeb.Domain.Helpers;
-using FaustWeb.SeedData.DefaultIdentity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
@@ -14,12 +14,13 @@ public class AuthService(UserManager<IdentityUser> userManager, IEmailService em
 {
     public async Task<ClaimsIdentity> Login(LoginDto loginDto)
     {
-        var user = await userManager.FindByEmailAsync(loginDto.Email);
-        if (user == null)
-            throw new NullReferenceException("User does not exist");
+        var user = await userManager.FindByEmailAsync(loginDto.Email)
+            ?? throw new NullReferenceException("User does not exist");
 
         if (!await userManager.CheckPasswordAsync(user, loginDto.Password))
+        {
             throw new Exception("Invalid password");
+        }
 
         return Authenticate(user);
     }
@@ -28,10 +29,14 @@ public class AuthService(UserManager<IdentityUser> userManager, IEmailService em
     {
         var user = await userManager.FindByEmailAsync(registerDto.Email);
         if (user != null)
+        {
             throw new Exception("User is already exists");
+        }
 
         if (registerDto.Password != registerDto.RepeatPassword)
+        {
             throw new Exception("Password and confirmation password do not match");
+        }
 
         var newUser = new IdentityUser
         {
@@ -62,9 +67,8 @@ public class AuthService(UserManager<IdentityUser> userManager, IEmailService em
 
     public async Task<string> ForgotPassword(ForgotPasswordDto forgotPasswordDto)
     {
-        var user = await userManager.FindByEmailAsync(forgotPasswordDto.Email);
-        if (user == null)
-            throw new NullReferenceException("User does not exist");
+        var user = await userManager.FindByEmailAsync(forgotPasswordDto.Email)
+            ?? throw new NullReferenceException("User does not exist");
 
         var token = await userManager.GeneratePasswordResetTokenAsync(user);
         var parameters = new Dictionary<string, string>
@@ -83,9 +87,8 @@ public class AuthService(UserManager<IdentityUser> userManager, IEmailService em
 
     public async Task ResetPassword(ResetPasswordDto resetPasswordDto)
     {
-        var user = await userManager.FindByEmailAsync(resetPasswordDto.Email);
-        if (user == null)
-            throw new NullReferenceException("User does not exist");
+        var user = await userManager.FindByEmailAsync(resetPasswordDto.Email)
+            ?? throw new NullReferenceException("User does not exist");
 
         var response = await userManager.ResetPasswordAsync(user, resetPasswordDto.Token, resetPasswordDto.Password);
         if (!response.Succeeded)

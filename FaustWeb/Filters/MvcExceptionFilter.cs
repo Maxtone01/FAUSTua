@@ -14,7 +14,7 @@ public class MvcExceptionFilter : IActionFilter
     {
         if (context.Exception != null)
         {
-            var referer = context.HttpContext.Request.Headers["Referer"].ToString();
+            var referer = context.HttpContext.Request.Headers.Referer.ToString();
 
             context.Result = new RedirectResult(referer);
             context.ExceptionHandled = true;

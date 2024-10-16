@@ -27,10 +27,8 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
         var entity = await dbSet
              .AsQueryable()
              .AsNoTracking()
-             .SingleOrDefaultAsync(x => x.Id == id);
-
-        if (entity == null)
-            throw new NullReferenceException($"{typeof(T).Name} not found.");
+             .SingleOrDefaultAsync(x => x.Id == id)
+             ?? throw new NullReferenceException($"{typeof(T).Name} not found.");
 
         return entity;
     }
@@ -44,10 +42,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
         foreach (var include in includes)
             query = query.Include(include);
 
-        var entity = await query.SingleOrDefaultAsync(x => x.Id == id);
-
-        if (entity == null)
-            throw new NullReferenceException($"{typeof(T).Name} not found.");
+        var entity = await query.SingleOrDefaultAsync(x => x.Id == id) ?? throw new NullReferenceException($"{typeof(T).Name} not found.");
 
         return entity;
     }
