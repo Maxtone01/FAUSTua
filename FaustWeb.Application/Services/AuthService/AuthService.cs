@@ -1,18 +1,15 @@
-﻿using AutoMapper;
-using FaustWeb.Application.Services.EmailService;
+﻿using FaustWeb.Application.Services.EmailService;
 using FaustWeb.Domain.DTO.Auth;
 using FaustWeb.Domain.DTO.Email;
 using FaustWeb.Domain.Helpers;
 using FaustWeb.SeedData.DefaultIdentity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace FaustWeb.Application.Services.AuthService;
 
-public class AuthService(UserManager<IdentityUser> userManager, IEmailService emailService, 
+public class AuthService(UserManager<IdentityUser> userManager, IEmailService emailService,
     IHttpContextAccessor httpContextAccessor) : IAuthService
 {
     public async Task<ClaimsIdentity> Login(LoginDto loginDto)
@@ -76,7 +73,7 @@ public class AuthService(UserManager<IdentityUser> userManager, IEmailService em
             { "email", forgotPasswordDto.Email }
         };
 
-        var clientUri = HttpContextHelper.GetClientUri(httpContextAccessor.HttpContext);
+        var clientUri = HttpContextHelper.GetClientUri(httpContextAccessor.HttpContext!);
         var request = $"{clientUri}?token={parameters["token"]}&email={parameters["email"]}";
         var message = new EmailMessage([user.Email!], "Reset password", request);
 
@@ -103,8 +100,8 @@ public class AuthService(UserManager<IdentityUser> userManager, IEmailService em
         var role = userManager.GetRolesAsync(user).Result.FirstOrDefault();
         var claims = new List<Claim>
         {
-            new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),
-            new Claim(ClaimsIdentity.DefaultRoleClaimType, role),
+            new(ClaimsIdentity.DefaultNameClaimType, user.Email!),
+            new(ClaimsIdentity.DefaultRoleClaimType, role!),
         };
         return new ClaimsIdentity(claims, "ApplicationCookie",
             ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);

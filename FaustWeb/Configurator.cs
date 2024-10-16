@@ -70,7 +70,7 @@ public static class Configurator
             .GetSection("EmailConfiguration")
             .Get<EmailConfiguration>();
 
-        builder.Services.AddSingleton(config);
+        builder.Services.AddSingleton(config!);
     }
 
     public static void ConfigureSwagger(this IServiceCollection services)
@@ -99,10 +99,10 @@ public static class Configurator
             {
                 if (apiDesc.GroupName != null)
                 {
-                    return new[] { apiDesc.GroupName };
+                    return [apiDesc.GroupName];
                 }
 
-                return new[] { apiDesc.HttpMethod };
+                return [apiDesc.HttpMethod];
             });
         });
     }

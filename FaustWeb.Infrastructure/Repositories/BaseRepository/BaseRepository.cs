@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FaustWeb.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using FaustWeb.Domain.Entities;
 
 namespace FaustWeb.Infrastructure.Repositories.BaseRepository;
 
@@ -24,10 +24,10 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
 
     public async Task<T> GetByIdAsync(int id)
     {
-       var entity = await dbSet
-            .AsQueryable()
-            .AsNoTracking()
-            .SingleOrDefaultAsync(x => x.Id == id);
+        var entity = await dbSet
+             .AsQueryable()
+             .AsNoTracking()
+             .SingleOrDefaultAsync(x => x.Id == id);
 
         if (entity == null)
             throw new NullReferenceException($"{typeof(T).Name} not found.");
@@ -58,7 +58,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
         entity.CreatedDate = date;
         entity.UpdatedDate = date;
 
-        await dbSet.AddAsync(entity);
+        dbSet.Add(entity);
         await _context.SaveChangesAsync();
 
         return entity;
@@ -73,7 +73,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
             entity.UpdatedDate = date;
         }
 
-        await dbSet.AddRangeAsync(entities);
+        dbSet.AddRange(entities);
         await _context.SaveChangesAsync();
 
         return entities;
