@@ -40,7 +40,9 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
             .AsNoTracking();
 
         foreach (var include in includes)
+        {
             query = query.Include(include);
+        }
 
         var entity = await query.SingleOrDefaultAsync(x => x.Id == id) ?? throw new NullReferenceException($"{typeof(T).Name} not found.");
 
@@ -86,7 +88,9 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
         var date = DateTime.Now;
         foreach (var entity in entities)
+        {
             entity.UpdatedDate = date;
+        }
 
         dbSet.UpdateRange(entities);
         await _context.SaveChangesAsync();
