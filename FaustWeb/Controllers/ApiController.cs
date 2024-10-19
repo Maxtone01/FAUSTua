@@ -4,7 +4,6 @@ using FaustWeb.Domain.DTO.Auth;
 using FaustWeb.Domain.DTO.Email;
 using FaustWeb.Filters;
 using Microsoft.AspNetCore.Mvc;
-using MimeKit;
 
 namespace FaustWeb.Controllers
 {
@@ -20,7 +19,7 @@ namespace FaustWeb.Controllers
         {
             return Ok();
         }
-        
+
         [HttpGet("test-filter")]
         [ApiExplorerSettings(GroupName = "Test")]
         public IActionResult TestFilter()

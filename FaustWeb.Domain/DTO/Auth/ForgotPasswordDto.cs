@@ -1,6 +1,4 @@
-﻿using FaustWeb.Domain.Helpers;
-using Microsoft.AspNetCore.Http;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace FaustWeb.Domain.DTO.Auth;
 

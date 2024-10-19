@@ -14,9 +14,8 @@ public static class Configurator
 {
     public static void ConfigureDbConnection(this WebApplicationBuilder builder)
     {
-        var connection = builder.Configuration.GetConnectionString("DefaultConnection");
-        if (connection == null)
-            throw new Exception("Connection not set");
+        var connection = builder.Configuration.GetConnectionString("DefaultConnection")
+            ?? throw new Exception("Connection not set");
 
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
         options.UseSqlServer(connection));
@@ -70,7 +69,7 @@ public static class Configurator
             .GetSection("EmailConfiguration")
             .Get<EmailConfiguration>();
 
-        builder.Services.AddSingleton(config);
+        builder.Services.AddSingleton(config!);
     }
 
     public static void ConfigureSwagger(this IServiceCollection services)
@@ -99,10 +98,10 @@ public static class Configurator
             {
                 if (apiDesc.GroupName != null)
                 {
-                    return new[] { apiDesc.GroupName };
+                    return [apiDesc.GroupName];
                 }
 
-                return new[] { apiDesc.HttpMethod };
+                return [apiDesc.HttpMethod];
             });
         });
     }

@@ -1,7 +1,7 @@
 using FaustWeb.Application.Services.AuthService;
 using FaustWeb.Domain.DTO.Auth;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -19,30 +19,18 @@ public class AuthenticationController(IAuthService authService) : Controller
     [HttpPost]
     public async Task<IActionResult> Auth(AuthDto authDto)
     {
-        if (!authDto.IsRegistration)
+        ClaimsIdentity response = authDto.IsRegistration
+            ? await authService.Signup(authDto.Register)
+            : await authService.Login(authDto.Login);
+
+        if (response.IsAuthenticated)
         {
-            var response = await authService.Login(authDto.Login);
-            if (response.IsAuthenticated)
-            {
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                        new ClaimsPrincipal(response));
-                return RedirectToAction("Index", "Home");
-            }
-            else
-                return View(authDto);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(response));
+            return RedirectToAction("Index", "Home");
         }
-        else
-        {
-            var response = await authService.Signup(authDto.Register);
-            if (response.IsAuthenticated)
-            {
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                        new ClaimsPrincipal(response));
-                return RedirectToAction("Index", "Home");
-            }
-            else
-                return View(authDto);
-        }
+
+        return View(authDto);
     }
 
     [HttpGet("logout")]

@@ -1,4 +1,4 @@
-﻿namespace FaustWeb.SeedData.DefaultIdentity;
+﻿namespace FaustWeb.Domain.DefaultIdentity;
 
 public class DefaultUsers
 {
