@@ -50,7 +50,7 @@ namespace FaustWeb.Controllers
             var recipients = new List<string> { "faustua2024@gmail.com" };
             var message = new EmailMessage(recipients, "Test email", "Test email content");
 
-            await emailService.SendEmailAsync(message);
+            await emailService.SendTextEmailAsync(message);
             return Ok("Email Sent");
         }
 

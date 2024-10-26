@@ -78,11 +78,10 @@ public class AuthService(UserManager<IdentityUser> userManager, IEmailService em
         };
 
         var clientUri = HttpContextHelper.GetClientUri(httpContextAccessor.HttpContext!);
-        var request = $"{clientUri}?token={parameters["token"]}&email={parameters["email"]}";
-        var message = new EmailMessage([user.Email!], "Reset password", request);
+        var resetLink = $"{clientUri}?token={parameters["token"]}&email={parameters["email"]}";
 
-        await emailService.SendEmailAsync(message);
-        return request;
+        await emailService.SendPasswordResetEmailAsync(user.Email!, resetLink);
+        return resetLink;
     }
 
     public async Task ResetPassword(ResetPasswordDto resetPasswordDto)
