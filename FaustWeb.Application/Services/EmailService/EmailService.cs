@@ -8,7 +8,6 @@ namespace FaustWeb.Application.Services.EmailService;
 public class EmailService(EmailConfiguration emailConfiguration, IWebHostEnvironment env) : IEmailService
 {
     #region Constants
-
     private const string TemplatesFolderName = "Templates";
     private const string PasswordResetTemplateName = "PasswordReset.html";
 
@@ -28,10 +27,10 @@ public class EmailService(EmailConfiguration emailConfiguration, IWebHostEnviron
         return new TextPart(MimeKit.Text.TextFormat.Text) { Text = content };
     }
 
-    private string GetHTMLTemplate(string templateName)
+    private async Task<string> GetHTMLTemplate(string templateName)
     {
         string filePath = Path.Combine(env.WebRootPath, TemplatesFolderName, templateName);
-        return File.ReadAllText(filePath);
+        return await File.ReadAllTextAsync(filePath);
     }
 
     private MimeMessage CreateEmailMessage(EmailMessage message, GetEmailBody getEmailBody)
@@ -79,7 +78,7 @@ public class EmailService(EmailConfiguration emailConfiguration, IWebHostEnviron
         EmailMessage message = new(
             [reciever],
             "Password reset",
-            GetHTMLTemplate(PasswordResetTemplateName),
+            await GetHTMLTemplate(PasswordResetTemplateName),
             resetLink);
 
         await SendHTMLEmailAsync(message);
