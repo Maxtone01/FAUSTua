@@ -75,7 +75,13 @@ form{
     transition: all 0.3s ease;
     cursor: pointer;
 }
-.field button:hover{
+.field button:disabled{
+    background-color: darkgray;
+}
+.field button:hover:disabled{
+    cursor: not-allowed;
+}
+.field button:hover:enabled{
     background-color: #016dcb;
 }
 .form-link{
