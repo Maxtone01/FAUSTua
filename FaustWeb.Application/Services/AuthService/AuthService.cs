@@ -5,12 +5,16 @@ using FaustWeb.Domain.DTO.Email;
 using FaustWeb.Domain.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.WebUtilities;
 using System.Security.Claims;
 
 namespace FaustWeb.Application.Services.AuthService;
 
 public class AuthService(UserManager<IdentityUser> userManager, IEmailService emailService,
-    IHttpContextAccessor httpContextAccessor) : IAuthService
+    IHttpContextAccessor httpContextAccessor, LinkGenerator linkGenerator) : IAuthService
 {
     public async Task<ClaimsIdentity> Login(LoginDto loginDto)
     {
@@ -71,31 +75,40 @@ public class AuthService(UserManager<IdentityUser> userManager, IEmailService em
             ?? throw new NullReferenceException("User does not exist");
 
         var token = await userManager.GeneratePasswordResetTokenAsync(user);
-        var parameters = new Dictionary<string, string>
+        Dictionary<string, string?> parameters = new()
         {
             { "token", token },
             { "email", forgotPasswordDto.Email }
         };
 
-        var clientUri = HttpContextHelper.GetClientUri(httpContextAccessor.HttpContext!);
-        var request = $"{clientUri}?token={parameters["token"]}&email={parameters["email"]}";
-        var message = new EmailMessage([user.Email!], "Reset password", request);
+        string action = linkGenerator.GetUriByAction(httpContextAccessor.HttpContext!, "ResetPassword", "Authentication")!;
 
-        await emailService.SendEmailAsync(message);
-        return request;
+        string resetLink = QueryHelpers.AddQueryString(action, parameters);
+
+        await emailService.SendPasswordResetEmailAsync(user.Email!, resetLink);
+        return resetLink;
     }
 
-    public async Task ResetPassword(ResetPasswordDto resetPasswordDto)
+    public async Task<IEnumerable<string>> ResetPassword(ResetPasswordDto resetPasswordDto)
     {
-        var user = await userManager.FindByEmailAsync(resetPasswordDto.Email)
-            ?? throw new NullReferenceException("User does not exist");
+        List<string> errorsMessages = [];
 
-        var response = await userManager.ResetPasswordAsync(user, resetPasswordDto.Token, resetPasswordDto.Password);
+        var user = await userManager.FindByEmailAsync(resetPasswordDto.Email);
+
+        if (user is null) 
+        {
+            errorsMessages.Add("Помилка, спробуйте запросити процедуру скидання паролю ще раз.");
+            return errorsMessages;
+        }
+
+        var response = await userManager.ResetPasswordAsync(user, resetPasswordDto.Token, resetPasswordDto.Password!);
+
         if (!response.Succeeded)
         {
-            var errors = response.Errors.Select(x => x.Description);
-            throw new InvalidOperationException(errors.FirstOrDefault());
+            errorsMessages = response.Errors.Select(x => x.Description).ToList();
         }
+
+        return errorsMessages;
     }
 
     private ClaimsIdentity Authenticate(IdentityUser user)

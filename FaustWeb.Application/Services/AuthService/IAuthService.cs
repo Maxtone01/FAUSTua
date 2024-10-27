@@ -8,5 +8,5 @@ public interface IAuthService
     Task<ClaimsIdentity> Login(LoginDto loginDto);
     Task<ClaimsIdentity> Signup(RegisterDto registerDto);
     Task<string> ForgotPassword(ForgotPasswordDto forgotPasswordDto);
-    Task ResetPassword(ResetPasswordDto resetPasswordDto);
+    Task<IEnumerable<string>> ResetPassword(ResetPasswordDto resetPasswordDto);
 }

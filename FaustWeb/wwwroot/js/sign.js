@@ -46,10 +46,40 @@ document.querySelector('.forgot-pass-link').addEventListener('click', () => {
   showForm(passResetForm);
 });
 
-document.querySelector('.pass-reset button').addEventListener('click', () => {
-  showForm(passResetPopup);
-});
-
 document.querySelector('.login-link').addEventListener('click', () => {
   showForm(loginForm);
+});
+
+document.querySelector('#closePopupButton').addEventListener('click', () => {
+    showForm(loginForm);
+});
+
+document.querySelector('#closeResetButton').addEventListener('click', () => {
+    showForm(loginForm);
+});
+
+$(function () {
+    $('#forgotPasswordForm').on('submit', function (e) {
+
+        e.preventDefault();
+
+        $('#forgotPasswordValidation').hide();
+
+        let button = $('#forgotPasswordForm button').first();
+        button.prop('disabled', true);
+
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            success: function (response) {
+                showForm(passResetPopup);
+                button.prop('disabled', false);
+            },
+            error: function (xhr) {
+                $('#forgotPasswordValidation').show();
+                button.prop('disabled', false);
+            }
+        });
+    });
 });

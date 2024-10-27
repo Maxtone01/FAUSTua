@@ -6,112 +6,117 @@
 }
 
 <section class="container forms">
-        <div class="form login">
-            <div class="form-content">
-                <label for="show" class="close-btn" title="close">
-                    <img src="icons/x.png">
-                </label>
-                <div style="font-size: 30px; color: white;">Вхід</div>
-                <form id="loginForm" action="authentication" method="post">
-                    <div asp-validation-summary="All" class="text-danger"></div>
-                    <div class="field input-field">
-                        <input type="email" asp-for=Login.Email placeholder="Емейл" class="input" style="color: #8E8E8E; background-color: #19102f;">
-                    </div>
-                    <div class="field input-field">
-                        <input type="password" asp-for=Login.Password placeholder="Пароль" class="password" style="color: #8E8E8E; background-color: #19102f;">
-                        <i class='bx bx-hide eye-icon'></i>
-                    </div>
-                    <input asp-for=IsRegistration value="@false" hidden />
-                    <div style="text-align: center; margin-top: 20px;">
-                        <div class="forgot-pass" style="color: #8E8E8E;">або</div>
-                    </div>
-                    <div class="media-options">
-                        <a href="#" class="field google" style="text-decoration: none;">
-                            <img src="Icons/google.svg" alt="" class="google-img">
-                            <span>За допомогою Google</span>
-                        </a>
-                    </div>
-                </form>
-                <div class="form-link" style="margin-top: 30px;">
-                    <span>Немає акаунту? <a href="#" class="link signup-link" style="color: #513879;">Створити акаунт</a></span>
+    <div class="form login">
+        <div class="form-content">
+            <label for="show" class="close-btn" title="close">
+                <img src="icons/x.png">
+            </label>
+            <div style="font-size: 30px; color: white;">Вхід</div>
+            <form id="loginForm" action="authentication" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="field input-field">
+                    <input type="email" asp-for=Login.Email placeholder="Емейл" class="input" style="color: #8E8E8E; background-color: #19102f;">
                 </div>
-                <div class="forgot-pass">
-                    <a href="#" class="link forgot-pass-link" style="color: #513879; margin-top: 2px;">Забув пароль</a>
+                <div class="field input-field">
+                    <input type="password" asp-for=Login.Password placeholder="Пароль" class="password" style="color: #8E8E8E; background-color: #19102f;">
+                    <i class='bx bx-hide eye-icon'></i>
                 </div>
-                <div class="field button-field" style="margin-top: 50px;">
-                    <button type="button" id="submitLogin">Увійти</button>
+                <input asp-for=IsRegistration value="@false" hidden />
+                <div style="text-align: center; margin-top: 20px;">
+                    <div class="forgot-pass" style="color: #8E8E8E;">або</div>
                 </div>
+                <div class="media-options">
+                    <a href="#" class="field google" style="text-decoration: none;">
+                        <img src="Icons/google.svg" alt="" class="google-img">
+                        <span>За допомогою Google</span>
+                    </a>
+                </div>
+            </form>
+            <div class="form-link" style="margin-top: 30px;">
+                <span>Немає акаунту? <a href="#" class="link signup-link" style="color: #513879;">Створити акаунт</a></span>
+            </div>
+            <div class="forgot-pass">
+                <a href="#" class="link forgot-pass-link" style="color: #513879; margin-top: 2px;">Забув пароль</a>
+            </div>
+            <div class="field button-field" style="margin-top: 50px;">
+                <button type="button" id="submitLogin">Увійти</button>
             </div>
         </div>
-        <!-- Signup Form -->
-        <div class="form signup">
-            <div class="form-content">
-                <div style="font-size: 30px; color: white;">Реєстрація</div>
-                <form id="registerForm" action="authentication" method="post">
-                    <div asp-validation-summary="All" class="text-danger"></div>
-                    <div class="field input-field">
-                        <input type="text" asp-for=Register.Nickname placeholder="Нік" class="input" style="color: #8E8E8E; background-color: #19102f;">
-                    </div>
-                    <div class="field input-field">
-                        <input type="email" asp-for=Register.Email placeholder="Емейл" class="input" style="color: #8E8E8E; background-color: #19102f;">
-                    </div>
-                    <div class="field input-field">
-                        <input type="password" asp-for=Register.Password placeholder="Пароль" class="password" style="color: #8E8E8E; background-color: #19102f;">
-                    </div>
-                    <div class="field input-field">
-                        <input type="password" asp-for=Register.RepeatPassword placeholder="Повторіть пароль" class="password" style="color: #8E8E8E; background-color: #19102f;">
-                        <i class='bx bx-hide eye-icon'></i>
-                    </div>
-                    <input type="hidden" asp-for="IsRegistration" value="true" />
-                </form>
-                <div class="form-link">
-                    <span>Маєте акаунт? <a href="#" class="link login-link" style="color: #513879;">Зайти</a></span>
+    </div>
+    <!-- Signup Form -->
+    <div class="form signup">
+        <div class="form-content">
+            <div style="font-size: 30px; color: white;">Реєстрація</div>
+            <form id="registerForm" action="authentication" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="field input-field">
+                    <input type="text" asp-for=Register.Nickname placeholder="Нік" class="input" style="color: #8E8E8E; background-color: #19102f;">
                 </div>
-            </div>
-            <div style="text-align: center; margin-top: 20px;">
-                <div class="forgot-pass" style="color: #8E8E8E;">або</div>
-            </div>
-            <div class="media-options">
-                <a href="#" class="field google" style="text-decoration: none;">
-                    <img src="Icons/google.svg" alt="" class="google-img">
-                    <span>За допомогою Google</span>
-                </a>
-            </div>
-            <div class="field button-field">
-                <button type="button" id="submitRegister">Зареєструватись</button>
-            </div>
-        </div>
-        <!-- Popup Form -->
-        <div class="form pass-reset-popup">
-            <div class="form-content">
-                <label for="show" class="close-btn" title="close">
-                    <img src="Icons/x.png">
-                </label>
-                <div style="font-size: 30px; color: white; font-size: 24px;">Перевіряйте свою поштову скриньку!</div>
-                <div style="font-size: 30px; color: #878787; margin-top: 30px; font-size: 16px; width: 350px;">Ми надіслали вам 
-                    електронний лист із підтвердженням особи, щоб відновити пароль. Якщо листа немає - перевірте "Спам"</div>
+                <div class="field input-field">
+                    <input type="email" asp-for=Register.Email placeholder="Емейл" class="input" style="color: #8E8E8E; background-color: #19102f;">
+                </div>
+                <div class="field input-field">
+                    <input type="password" asp-for=Register.Password placeholder="Пароль" class="password" style="color: #8E8E8E; background-color: #19102f;">
+                </div>
+                <div class="field input-field">
+                    <input type="password" asp-for=Register.RepeatPassword placeholder="Повторіть пароль" class="password" style="color: #8E8E8E; background-color: #19102f;">
+                    <i class='bx bx-hide eye-icon'></i>
+                </div>
+                <input type="hidden" asp-for="IsRegistration" value="true" />
+            </form>
+            <div class="form-link">
+                <span>Маєте акаунт? <a href="#" class="link login-link" style="color: #513879;">Зайти</a></span>
             </div>
         </div>
-        <!-- Pass Reset Form -->
-        <div class="form pass-reset">
-            <div class="form-content">
-                <label for="show" class="close-btn" title="close">
-                    <img src="Icons/x.png">
-                </label>
-                <div style="font-size: 30px; color: white; font-size: 24px;">Відновленя паролю</div>
-                <div style="font-size: 30px; color: white; margin-top: 30px; font-size: 16px; width: 350px;">Введіть свій емейл, щоб отримати підтверження на відновлення паролю</div>
-                <form action="#">
-                    <div class="field input-field">
-                        <input type="email" placeholder="Емейл" class="input" style="color: #8E8E8E; 
+        <div style="text-align: center; margin-top: 20px;">
+            <div class="forgot-pass" style="color: #8E8E8E;">або</div>
+        </div>
+        <div class="media-options">
+            <a href="#" class="field google" style="text-decoration: none;">
+                <img src="Icons/google.svg" alt="" class="google-img">
+                <span>За допомогою Google</span>
+            </a>
+        </div>
+        <div class="field button-field">
+            <button type="button" id="submitRegister">Зареєструватись</button>
+        </div>
+    </div>
+    <!-- Popup Form -->
+    <div class="form pass-reset-popup">
+        <div class="form-content">
+            <label for="show" class="close-btn" title="close" id="closePopupButton">
+                <img src="Icons/x.png">
+            </label>
+            <div style="font-size: 30px; color: white; font-size: 24px;">Перевіряйте свою поштову скриньку!</div>
+            <div style="font-size: 30px; color: #878787; margin-top: 30px; font-size: 16px; width: 350px;">
+                Ми надіслали вам
+                електронний лист із підтвердженням особи, щоб відновити пароль. Якщо листа немає - перевірте "Спам"
+            </div>
+        </div>
+    </div>
+    <!-- Pass Reset Form -->
+    <div class="form pass-reset">
+        <div class="form-content">
+            <label for="show" class="close-btn" title="close" id="closeResetButton">
+                <img src="Icons/x.png">
+            </label>
+            <div style="font-size: 30px; color: white; font-size: 24px;">Відновленя паролю</div>
+            <div style="font-size: 30px; color: white; margin-top: 30px; font-size: 16px; width: 350px;">Введіть свій емейл, щоб отримати підтверження на відновлення паролю</div>
+            <form id="forgotPasswordForm" method="post" action="/api/forgot-password">
+                <div class="field input-field">
+                    <input name="Email" type="email" placeholder="Емейл" class="input" style="color: #8E8E8E;
                         background-color: #19102f;
                         border-radius: 15px;
                         height: 50px;
                         margin-top: -20px;">
-                    </div>
-                    <div class="field button-field" style="margin-top: 20px;">
-                        <button>Відправити</button>
-                    </div>
-                </form>
-            </div>
+                </div>
+                <div id="forgotPasswordValidation" style="display: none;">
+                    <p style="color: red;">Вкажіть електронну пошту в правильному форматі</p>
+                </div>
+                <div class="field button-field" style="margin-top: 20px;">
+                    <button type="submit">Відправити</button>
+                </div>
+            </form>
         </div>
+    </div>
 </section>

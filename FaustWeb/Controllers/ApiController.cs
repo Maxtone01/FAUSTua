@@ -50,13 +50,13 @@ namespace FaustWeb.Controllers
             var recipients = new List<string> { "faustua2024@gmail.com" };
             var message = new EmailMessage(recipients, "Test email", "Test email content");
 
-            await emailService.SendEmailAsync(message);
+            await emailService.SendTextEmailAsync(message);
             return Ok("Email Sent");
         }
 
         [HttpPost("forgot-password")]
         [ApiExplorerSettings(GroupName = "Email")]
-        public async Task<IActionResult> ForgotPassword(ForgotPasswordDto forgotPasswordDto)
+        public async Task<IActionResult> ForgotPassword([FromForm]ForgotPasswordDto forgotPasswordDto)
         {
             var response = await authService.ForgotPassword(forgotPasswordDto);
             return Ok(response);
