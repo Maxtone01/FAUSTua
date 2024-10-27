@@ -16,6 +16,37 @@ public class AuthenticationController(IAuthService authService) : Controller
         return View();
     }
 
+    [HttpGet("resetPassword")]
+    public IActionResult ResetPassword([FromQuery] string token, [FromQuery] string email)
+    {
+        ResetPasswordDto model = new() { Token = token, Email = email };
+
+        return View(model);
+    }
+
+    [HttpPost("resetPassword")]
+    public async Task<IActionResult> ResetPassword(ResetPasswordDto resetPasswordDto)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(resetPasswordDto);
+        }
+        
+        var result = await authService.ResetPassword(resetPasswordDto);
+
+        if (result.Any())
+        {
+            foreach(var error in result)
+            {
+                ModelState.AddModelError(error, error);
+            }
+
+            return View(resetPasswordDto);
+        }
+
+        return RedirectToAction(nameof(Auth));
+    }
+
     [HttpPost]
     public async Task<IActionResult> Auth(AuthDto authDto)
     {

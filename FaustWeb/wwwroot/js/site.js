@@ -12,6 +12,10 @@ linksMatching.filter(q => q.classList.contains("no-text-decor")).forEach(q => Ar
 
 linksMatching.filter(q => q.classList.contains("nav-link-container")).forEach(q => q.parentElement.classList.add("active-link"));
 
+function goToMainPage() {
+    window.location.href = '/';
+}
+
 function openNav() {
     document.getElementById("side-nav").style.width = "100%";
 }
