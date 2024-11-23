@@ -1,3 +1,281 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<link rel="stylesheet" href="css/mainStyle.css"/>
+<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="css/libraryStyle.css"/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+        <header id="header" style="position: relative;">
+            <div class="background-image" style="position: relative;">
+                <p class="fat-sentence">Популярне</p>
+                <div class="carousel-container swiper">
+                    <div class="card-wrapper">
+                        <ul class="card-list swiper-wrapper">
+                            <li class="card-item swiper-slide">
+                                <a href="#" class="card-link">
+                                    <img src="icons/Title.jpg" alt="Card Image"
+                                    class="card-image">
+                                    <div class="top-images">
+                                        <img src="icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                                        <img src="icons/Category.png" class="category-icon" alt="Top Image 2">
+                                    </div>
+                                    <div class="content">
+                                        <div class="text-fields">
+                                            <p id="titleName" class="title-name">Ще тільки світанок</p>
+                                            <p id="titleDescription" class="title-name-alt">그저 여명일 뿐</p>
+                                        </div>
+                                        <div class="horizontal-block">
+                                            <img src="icons/star_filled.png" class="popular-icons" alt="Image 3">
+                                            <span class="popular-text">35</span>
+                                            <img src="icons/bookmark_filled.png" class="popular-icons" alt="Image 4">
+                                            <span class="popular-text">89</span>
+                                            <img src="icons/chat_bubble.png" class="popular-icons" alt="Image 5">
+                                            <span class="popular-text">26</span>
+                                        </div>
+                                        <p class="about-text">Опис: </p>
+                                        <p class="description-text">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.– Знайомство зі мною не принесе тобі нічого хорошого...
+                                            <br><br>
+                                            - Знайомство зі мною не принесе тобі нічого хорошого...
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="swiper-pagination"></div>
+                        <a href="#" class="left-popul-button"><img src="icons/arrow-back-simple.png" alt=""/></a>
+                        <a href="#" class="right-popul-button"><img src="icons/arrow-forward-simple.png" alt=""/></a>
+                        <p id="popularQuantity" class="popular-quantity">1/10</p>
+                    </div>
+                </div>
+            </div>
+            <script src="script.js"></script>
+        </header>
+        <div id="side-menu" class="side-menu">
+            <div class="side-menu-content">
+                <div class="menu-header">
+                    <img src="icons/logo.png" alt="Logo" class="menu-logo">
+                    <p class="menu-title">FAUST · ФАУСТ</p>
+                </div>
+                <ul>
+                    <li><a href="#">Головна</a></li>
+                    <li>
+                        <a href="#">Проєкти</a>
+                        <ul>
+                            <li><a href="#">Останні оновлення</a></li>
+                            <li><a href="#">Фільтр</a></li>
+                            <li><a href="#">Рандом</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Про ФАУСТ</a>
+                        <ul>
+                            <li><a href="#">Правила сайту</a></li>
+                            <li><a href="#">Вступ до ФАУСТу</a></li>
+                            <li><a href="#">Зв'язок з адміністраторами</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Налаштування</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <script>
+            const menuIcon = document.querySelector('.menu-icon');
+            const sideMenu = document.getElementById('side-menu');
+
+            menuIcon.addEventListener('click', () => {
+                if (sideMenu.style.left === '0px') {
+                    sideMenu.style.left = '-250px'; // Hide the menu
+                } else {
+                    sideMenu.style.left = '0px'; // Show the menu
+                }
+            });
+
+            // Optionally close the menu when clicking outside
+            document.addEventListener('click', (event) => {
+                if (!sideMenu.contains(event.target) && !menuIcon.contains(event.target)) {
+                    sideMenu.style.left = '-250px';
+                }
+            });
+
+        </script>
+        
+        <p class="standartText" style=" margin-left: 2%; margin-top: 20px;">Новини сайту</p>
+        <div class="news">
+            <div class="div-container">
+                <a href="#" class="left-button-news"><img src="icons/arrow-back-simple.png" alt=""></a>
+                <a href="#" class="right-button-news"><img src="icons/arrow-forward-simple.png" alt=""></a>
+                <div class="image-container">
+                    <p class="ft">У Фауста є новини для тебе!</p>
+                    <p class="sf">20.05.2025 з 16:00 по 20:00 проводитимуться технічні роботи на сайті!</p>
+                </div>
+            </div>
+        </div>   
+        <p class="standartText" style="margin-left: 2%; margin-top: 20px;">Команди, які довірилися нам</p>
+        <div class="slider-container">
+            <div class="team-slider">
+              <a href="#" class="slide">
+                <img src="icons/avatarka1.png" alt="Картинка 1">
+                <p class="slider-text">Філіжанка чаю</p>
+              </a>
+              <a href="#" class="slide">
+                <img src="icons/avatarka1.png" alt="Картинка 1">
+                <p class="slider-text">Філіжанка чаю</p>
+              </a>
+              <a href="#" class="slide">
+                <img src="icons/avatarka1.png" alt="Картинка 1">
+                <p class="slider-text"s>Філіжанка чаю</p>
+              </a>
+            </div>
+            <button class="slider-prev">&#10094;</button>
+            <button class="slider-next">&#10095;</button>
+          </div>
+        <p class="standartText" style="margin-left: 2%; margin-top: 20px;">Останні оновлення</p>
+        <section id="layout-wrapper" class="library-grid">
+            <div class="library-item">
+                <div class="img-container">
+                    <img src="Icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+                    <div class="library-top-images">
+                        <img src="Icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                        <img src="Icons/Category.png" class="category-icon" alt="Top Image 2">
+                    </div>
+                </div>
+                <div class="manga-info">
+                    <h4 class="title">Ще тільки світанок</h4>
+                    <p class="small-title">Just twilight</p>
+                    <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+                </div>
+            </div>
+            <div class="library-item">
+                <div class="img-container">
+                    <img src="Icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+                    <div class="library-top-images">
+                        <img src="Icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                        <img src="Icons/Category.png" class="category-icon" alt="Top Image 2">
+                    </div>
+                </div>
+                <div class="manga-info">
+                    <h4 class="title">Ще тільки світанок</h4>
+                    <p class="small-title">Just twilight</p>
+                    <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+                </div>
+            </div>
+            <div class="library-item">
+                <div class="img-container">
+                    <img src="Icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+                    <div class="library-top-images">
+                        <img src="Icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                        <img src="Icons/Category.png" class="category-icon" alt="Top Image 2">
+                    </div>
+                </div>
+                <div class="manga-info">
+                    <h4 class="title">Ще тільки світанок</h4>
+                    <p class="small-title">Just twilight</p>
+                    <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+                </div>
+            </div>
+            <div class="library-item">
+                <div class="img-container">
+                    <img src="Icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+                    <div class="library-top-images">
+                        <img src="Icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                        <img src="Icons/Category.png" class="category-icon" alt="Top Image 2">
+                    </div>
+                </div>
+                <div class="manga-info">
+                    <h4 class="title">Ще тільки світанок</h4>
+                    <p class="small-title">Just twilight</p>
+                    <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+                </div>
+            </div>
+            <div class="library-item">
+                <div class="img-container">
+                    <img src="Icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+                    <div class="library-top-images">
+                        <img src="Icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                        <img src="Icons/Category.png" class="category-icon" alt="Top Image 2">
+                    </div>
+                </div>
+                <div class="manga-info">
+                    <h4 class="title">Ще тільки світанок</h4>
+                    <p class="small-title">Just twilight</p>
+                    <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+                </div>
+            </div>
+            <div class="library-item">
+                <div class="img-container">
+                    <img src="Icons/1653503485_avaav (1).jpg" alt="Ще тільки світанок" class="cover">
+                    <div class="library-top-images">
+                        <img src="Icons/onProcess.png" class="process-icon" alt="Top Image 1">
+                        <img src="Icons/Category.png" class="category-icon" alt="Top Image 2">
+                    </div>
+                </div>
+                <div class="manga-info">
+                    <h4 class="title">Ще тільки світанок</h4>
+                    <p class="small-title">Just twilight</p>
+                    <p class="about">Вона була схожа на тайфун. Той, що необережно порушив його спокійні дні.</p>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <section class="project-invitation">
+                <div class="invitation-content">
+                  <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/248dac12ddf2159d194e569fcdd234c2560d5da4a7bf0880254f4fe764c98388?placeholderIfAbsent=true&apiKey=4eba73c46e2b48f5be23182e28be6437" class="logo" alt="Project logo" />
+                  <div class="content-wrapper">
+                    <h2 class="invitation-title">Запрошуємо вас долучитися до проєкту!</h2>
+                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/bbfd2207922a120712dca83d6fe03ca334188207a307ad3239208c0c48cd362b?placeholderIfAbsent=true&apiKey=4eba73c46e2b48f5be23182e28be6437" class="divider" alt="" />
+                    <div class="links-container">
+                      <nav class="left-links">
+                        <a href="#" class="link-text">Правила сайту</a>
+                        <a href="#" class="link-text">FAQ - питання/відповіді</a>
+                        <a href="#" class="link-text">DMCA</a>
+                      </nav>
+                      <nav class="right-links">
+                        <a href="#" class="link-text">Кодекс Фауст</a>
+                        <a href="#" class="link-text">Зв'язок з адмінами</a>
+                        <div class="social-icons">
+                          <a href="#" aria-label="Social media link">
+                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/0df7389ab47b00b676e3839fa476ecf5b4526c402d73635d9638e211ddf741a5?placeholderIfAbsent=true&apiKey=4eba73c46e2b48f5be23182e28be6437" class="social-icon" alt="" />
+                          </a>
+                          <a href="#" aria-label="Social media link">
+                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/89380d5289f0a3567102b185c7324f0f5b5e29e0b5813dd43714849a822d5627?placeholderIfAbsent=true&apiKey=4eba73c46e2b48f5be23182e28be6437" class="social-icon" alt="" />
+                          </a>
+                        </div>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+              </section>
+        </footer>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const titleItems = document.querySelectorAll('.title-item');
+                
+                let lastRowTop = titleItems[0].offsetTop; // позиція першого елемента
+                let currentRow = [];
+
+                titleItems.forEach((item, index) => {
+                    const itemTop = item.offsetTop; // позиція кожного елемента
+                    
+                    if (itemTop !== lastRowTop) {
+                        // Якщо перенос на новий рядок, очищаємо попередній рядок
+                        currentRow = [];
+                        lastRowTop = itemTop;
+                    }
+                    
+                    currentRow.push(item);
+
+                    // Якщо це останній елемент або елемент у новому рядку
+                    if (index === titleItems.length - 1 || itemTop !== lastRowTop) {
+                        // Видаляємо всі елементи останнього рядка
+                        currentRow.forEach((rowItem) => {
+                            rowItem.remove();
+                        });
+                    }
+                });
+            });
+
+        </script>
