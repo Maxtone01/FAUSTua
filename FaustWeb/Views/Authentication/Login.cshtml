@@ -1,84 +1,45 @@
 ﻿@using FaustWeb.Domain.DTO.Auth
-@model AuthDto
+@model LoginDto
 
 @{
-    ViewData["Title"] = "Реєстрація";
+    ViewData["Title"] = "Вхід";
 }
 
 <section class="container forms">
-    <div class="form login">
+    <div class="form login" style="display:block;">
         <div class="form-content">
             <label for="show" class="close-btn" title="close">
                 <img src="icons/x.png">
             </label>
             <div style="font-size: 30px; color: white;">Вхід</div>
-            <form id="loginForm" action="authentication" method="post">
+            <form id="loginForm" action="login" method="post">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="field input-field">
-                    <input type="email" asp-for=Login.Email placeholder="Емейл" class="input" style="color: #8E8E8E; background-color: #19102f;">
+                    <input type="email" asp-for=Email placeholder="Емейл" class="input" style="color: #8E8E8E; background-color: #19102f;">
                 </div>
                 <div class="field input-field">
-                    <input type="password" asp-for=Login.Password placeholder="Пароль" class="password" style="color: #8E8E8E; background-color: #19102f;">
+                    <input type="password" asp-for=Password placeholder="Пароль" class="password" style="color: #8E8E8E; background-color: #19102f;">
                     <i class='bx bx-hide eye-icon'></i>
                 </div>
-                <input asp-for=IsRegistration value="@false" hidden />
                 <div style="text-align: center; margin-top: 20px;">
                     <div class="forgot-pass" style="color: #8E8E8E;">або</div>
                 </div>
                 <div class="media-options">
                     <a href="#" class="field google" style="text-decoration: none;">
-                        <img src="Icons/google.svg" alt="" class="google-img">
+                        <img src="/icons/google.svg" alt="" class="google-img">
                         <span>За допомогою Google</span>
                     </a>
                 </div>
             </form>
             <div class="form-link" style="margin-top: 30px;">
-                <span>Немає акаунту? <a href="#" class="link signup-link" style="color: #513879;">Створити акаунт</a></span>
+                <span>Немає акаунту? <a href="signup" class="link signup-link" style="color: #513879;">Створити акаунт</a></span>
             </div>
             <div class="forgot-pass">
-                <a href="#" class="link forgot-pass-link" style="color: #513879; margin-top: 2px;">Забув пароль</a>
+                <a href="reset-password" class="link forgot-pass-link" style="color: #513879; margin-top: 2px;">Забув пароль</a>
             </div>
             <div class="field button-field" style="margin-top: 50px;">
                 <button type="button" id="submitLogin">Увійти</button>
             </div>
-        </div>
-    </div>
-    <!-- Signup Form -->
-    <div class="form signup">
-        <div class="form-content">
-            <div style="font-size: 30px; color: white;">Реєстрація</div>
-            <form id="registerForm" action="authentication" method="post">
-                <div asp-validation-summary="All" class="text-danger"></div>
-                <div class="field input-field">
-                    <input type="text" asp-for=Register.Nickname placeholder="Нік" class="input" style="color: #8E8E8E; background-color: #19102f;">
-                </div>
-                <div class="field input-field">
-                    <input type="email" asp-for=Register.Email placeholder="Емейл" class="input" style="color: #8E8E8E; background-color: #19102f;">
-                </div>
-                <div class="field input-field">
-                    <input type="password" asp-for=Register.Password placeholder="Пароль" class="password" style="color: #8E8E8E; background-color: #19102f;">
-                </div>
-                <div class="field input-field">
-                    <input type="password" asp-for=Register.RepeatPassword placeholder="Повторіть пароль" class="password" style="color: #8E8E8E; background-color: #19102f;">
-                    <i class='bx bx-hide eye-icon'></i>
-                </div>
-                <input type="hidden" asp-for="IsRegistration" value="true" />
-            </form>
-            <div class="form-link">
-                <span>Маєте акаунт? <a href="#" class="link login-link" style="color: #513879;">Зайти</a></span>
-            </div>
-        </div>
-        <div style="text-align: center; margin-top: 20px;">
-            <div class="forgot-pass" style="color: #8E8E8E;">або</div>
-        </div>
-        <div class="media-options">
-            <a href="#" class="field google" style="text-decoration: none;">
-                <img src="Icons/google.svg" alt="" class="google-img">
-                <span>За допомогою Google</span>
-            </a>
-        </div>
-        <div class="field button-field">
-            <button type="button" id="submitRegister">Зареєструватись</button>
         </div>
     </div>
     <!-- Popup Form -->

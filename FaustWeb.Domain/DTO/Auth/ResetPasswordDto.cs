@@ -4,11 +4,11 @@ namespace FaustWeb.Domain.DTO.Auth;
 
 public class ResetPasswordDto
 {
-    [Required]
+    [Required(ErrorMessage = "Введіть пароль")]
     public string? Password { get; set; }
 
-    [Required]
-    [Compare("Password")]
+    [Required(ErrorMessage = "Повторіть пароль")]
+    [Compare("Password", ErrorMessage = "Паролі не співпадають")]
     public string? ConfirmPassword { get; set; }
 
     public string Email { get; set; } = string.Empty;

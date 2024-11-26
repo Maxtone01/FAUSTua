@@ -1,5 +1,6 @@
 using FaustWeb.Application.Services.AuthService;
 using FaustWeb.Domain.DTO.Auth;
+using FaustWeb.Filters;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -8,23 +9,63 @@ using System.Security.Claims;
 namespace FaustWeb.Controllers;
 
 [Route("authentication")]
+[TypeFilter(typeof(MvcExceptionFilter))]
 public class AuthenticationController(IAuthService authService) : Controller
 {
-    [HttpGet]
-    public IActionResult Auth()
+    [HttpGet("login")]
+    public IActionResult Login()
     {
         return View();
     }
 
-    [HttpGet("resetPassword")]
+    [HttpPost("login")]
+    public async Task<IActionResult> Login(LoginDto loginDto)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(loginDto);
+        }
+
+        var response = await authService.Login(loginDto);
+        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+            new ClaimsPrincipal(response));
+
+        return RedirectToAction("Index", "Home");
+    }
+
+    [HttpGet("signup")]
+    public IActionResult Signup()
+    {
+        return View();
+    }
+
+    [HttpPost("signup")]
+    public async Task<IActionResult> Signup(RegisterDto registerDto)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(registerDto);
+        }
+
+        var response = await authService.Signup(registerDto);
+        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+            new ClaimsPrincipal(response));
+
+        return RedirectToAction("Index", "Home");
+    }
+
+    [HttpGet("reset-password")]
     public IActionResult ResetPassword([FromQuery] string token, [FromQuery] string email)
     {
-        ResetPasswordDto model = new() { Token = token, Email = email };
+        var model = new ResetPasswordDto 
+        { 
+            Token = token, Email = email 
+        };
 
         return View(model);
     }
 
-    [HttpPost("resetPassword")]
+    [HttpPost("reset-password")]
     public async Task<IActionResult> ResetPassword(ResetPasswordDto resetPasswordDto)
     {
         if (!ModelState.IsValid)
@@ -44,24 +85,7 @@ public class AuthenticationController(IAuthService authService) : Controller
             return View(resetPasswordDto);
         }
 
-        return RedirectToAction(nameof(Auth));
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Auth(AuthDto authDto)
-    {
-        ClaimsIdentity response = authDto.IsRegistration
-            ? await authService.Signup(authDto.Register)
-            : await authService.Login(authDto.Login);
-
-        if (response.IsAuthenticated)
-        {
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(response));
-            return RedirectToAction("Index", "Home");
-        }
-
-        return View(authDto);
+        return RedirectToAction(nameof(Login));
     }
 
     [HttpGet("logout")]
