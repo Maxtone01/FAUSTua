@@ -4,11 +4,11 @@ namespace FaustWeb.Domain.DTO.Auth;
 
 public class LoginDto
 {
-    [Required(ErrorMessage = "Email is required")]
-    [EmailAddress]
+    [Required(ErrorMessage = "Введіть пошту")]
+    [EmailAddress(ErrorMessage = "Невірний формат")]
     public string Email { get; set; } = string.Empty;
 
-    [Required(ErrorMessage = "Password is required")]
+    [Required(ErrorMessage = "Введіть пароль")]
     [DataType(DataType.Password)]
     public string Password { get; set; } = string.Empty;
 }

@@ -53,18 +53,26 @@ function toggleAboutContext() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    submitLogin();
-    submitRegister();
+    setupLoginForm();
+    setupRegisterForm();
 
-    function submitLogin() {
-        document.getElementById('submitLogin').addEventListener('click', function () {
-            document.getElementById('loginForm').submit();
-        });
+    function setupLoginForm() {
+        const loginForm = document.getElementById('loginForm');
+        const submitLoginButton = document.getElementById('submitLogin');
+        if (loginForm && submitLoginButton) {
+            submitLoginButton.addEventListener('click', function () {
+                loginForm.submit();
+            });
+        }
     }
 
-    function submitRegister() {
-        document.getElementById('submitRegister').addEventListener('click', function () {
-            document.getElementById('registerForm').submit();
-        });
+    function setupRegisterForm() {
+        const registerForm = document.getElementById('registerForm');
+        const submitRegisterButton = document.getElementById('submitRegister');
+        if (registerForm && submitRegisterButton) {
+            submitRegisterButton.addEventListener('click', function () {
+                registerForm.submit();
+            });
+        }
     }
 });
