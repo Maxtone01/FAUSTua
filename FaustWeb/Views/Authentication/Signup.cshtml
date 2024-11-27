@@ -5,9 +5,19 @@
     ViewData["Title"] = "Реєстрація";
 }
 
+@section Scripts
+{
+    <script src="js/sign.js"></script>
+}
+
 <section class="container forms">
     <div class="form signup" style="display:block;">
         <div class="form-content">
+            <a href="/">
+                <label for="show" class="close-btn" title="close" id="closePopupButton">
+                    <img src="/icons/x.png">
+                </label>
+            </a>
             <div style="font-size: 30px; color: white;">Реєстрація</div>
             <form id="registerForm" action="signup" method="post">
                 <div asp-validation-summary="All" class="text-danger"></div>
@@ -45,9 +55,11 @@
     <!-- Popup Form -->
     <div class="form pass-reset-popup">
         <div class="form-content">
-            <label for="show" class="close-btn" title="close" id="closePopupButton">
-                <img src="Icons/x.png">
-            </label>
+            <a href="/">
+                <label for="show" class="close-btn" title="close" id="closePopupButton">
+                    <img src="/icons/x.png">
+                </label>
+            </a>
             <div style="font-size: 30px; color: white; font-size: 24px;">Перевіряйте свою поштову скриньку!</div>
             <div style="font-size: 30px; color: #878787; margin-top: 30px; font-size: 16px; width: 350px;">
                 Ми надіслали вам

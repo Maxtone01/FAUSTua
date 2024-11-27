@@ -8,9 +8,11 @@
 <section class="container forms">
     <div class="form login" style="display:block;">
         <div class="form-content">
-            <label for="show" class="close-btn" title="close">
-                <img src="icons/x.png">
-            </label>
+            <a href="/">
+                <label for="show" class="close-btn" title="close" id="closePopupButton">
+                    <img src="/icons/x.png">
+                    </label>
+                </a>
             <div style="font-size: 30px; color: white;">Вхід</div>
             <form id="loginForm" action="login" method="post">
                 <div asp-validation-summary="All" class="text-danger"></div>
