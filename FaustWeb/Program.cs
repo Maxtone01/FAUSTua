@@ -40,6 +40,9 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.MapFallbackToFile("account", "/client/index.html");
+app.MapFallbackToFile("client", "/client/index.html");
+
 await app.CreateDefaultIdentityAsync();
 
 await app.RunAsync();
