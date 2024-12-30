@@ -8,7 +8,7 @@ public class DefaultUsers
     public const string AdminPassword = "AdminPassword";
 
     public const string UserName = "User";
-    public const string UserTag = "Admin";
+    public const string UserTag = "User";
     public const string UserEmail = "user@user.com";
     public const string UserPassword = "UserPassword";
 }
