@@ -56,7 +56,7 @@ namespace FaustWeb.Controllers
 
         [HttpPost("forgot-password")]
         [ApiExplorerSettings(GroupName = "Email")]
-        public async Task<IActionResult> ForgotPassword([FromForm]ForgotPasswordDto forgotPasswordDto)
+        public async Task<IActionResult> ForgotPassword([FromForm] ForgotPasswordDto forgotPasswordDto)
         {
             var response = await authService.ForgotPassword(forgotPasswordDto);
             return Ok(response);

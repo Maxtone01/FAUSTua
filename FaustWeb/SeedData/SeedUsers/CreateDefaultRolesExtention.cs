@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.Identity;
 
 namespace FaustWeb.SeedData.SeedUsers;
 
-public static class CreateDefaultRolesExtention
+public static class CreateDefaultRolesExtension
 {
     public static async Task CreateDefaultRolesAsync(this WebApplication app)
     {
         using var scope = app.Services.CreateAsyncScope();
-        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
 
         var roles = new[]
         {
@@ -20,7 +20,7 @@ public static class CreateDefaultRolesExtention
         {
             if (!await roleManager.RoleExistsAsync(role))
             {
-                await roleManager.CreateAsync(new IdentityRole(role));
+                await roleManager.CreateAsync(new IdentityRole<Guid>(role));
             }
         }
     }

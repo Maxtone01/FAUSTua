@@ -1,19 +1,16 @@
 ﻿using FaustWeb.Application.Services.EmailService;
 using FaustWeb.Domain.DefaultIdentity;
 using FaustWeb.Domain.DTO.Auth;
-using FaustWeb.Domain.DTO.Email;
-using FaustWeb.Domain.Helpers;
+using FaustWeb.Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Security.Claims;
 
 namespace FaustWeb.Application.Services.AuthService;
 
-public class AuthService(UserManager<IdentityUser> userManager, IEmailService emailService,
+public class AuthService(UserManager<User> userManager, IEmailService emailService,
     IHttpContextAccessor httpContextAccessor, LinkGenerator linkGenerator) : IAuthService
 {
     public async Task<ClaimsIdentity> Login(LoginDto loginDto)
@@ -42,10 +39,11 @@ public class AuthService(UserManager<IdentityUser> userManager, IEmailService em
             throw new Exception("Password and confirmation password do not match");
         }
 
-        var newUser = new IdentityUser
+        var newUser = new User
         {
             UserName = registerDto.Nickname,
             Email = registerDto.Email,
+            Tag = registerDto.Nickname
         };
 
         var response = await userManager.CreateAsync(newUser, registerDto.Password);
@@ -95,7 +93,7 @@ public class AuthService(UserManager<IdentityUser> userManager, IEmailService em
 
         var user = await userManager.FindByEmailAsync(resetPasswordDto.Email);
 
-        if (user is null) 
+        if (user is null)
         {
             errorsMessages.Add("Помилка, спробуйте запросити процедуру скидання паролю ще раз.");
             return errorsMessages;
@@ -111,7 +109,7 @@ public class AuthService(UserManager<IdentityUser> userManager, IEmailService em
         return errorsMessages;
     }
 
-    private ClaimsIdentity Authenticate(IdentityUser user)
+    private ClaimsIdentity Authenticate(User user)
     {
         var role = userManager.GetRolesAsync(user).Result.FirstOrDefault();
         var claims = new List<Claim>
