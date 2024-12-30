@@ -80,9 +80,17 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
             .HasKey(commentLike => new { commentLike.CommentId, commentLike.UserId });
 
         modelBuilder.Entity<Tag>()
+            .HasIndex(q => q.Name)
+            .IsUnique();
+
+        modelBuilder.Entity<Tag>()
             .HasMany(tag => tag.AssignedTags)
             .WithOne(assignedTag => assignedTag.Tag)
             .HasForeignKey(assignedTag => assignedTag.TagId);
+
+        modelBuilder.Entity<Title>()
+            .HasIndex(q => q.Name)
+            .IsUnique();
 
         modelBuilder.Entity<Title>()
             .HasMany(title => title.Tags)
@@ -147,6 +155,10 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
             .HasKey(saved => new { saved.UserId, saved.TitleId });
 
         modelBuilder.Entity<TranslationTeam>()
+            .HasIndex(q => q.Name)
+            .IsUnique();
+
+        modelBuilder.Entity<TranslationTeam>()
             .HasMany(translationTeam => translationTeam.Chapters)
             .WithOne(chapter => chapter.TranslationTeam)
             .HasForeignKey(chapter => chapter.TranslationTeamId)
@@ -165,6 +177,10 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
             .HasMany(volume => volume.Chapters)
             .WithOne(chapter => chapter.Volume)
             .HasForeignKey(chapter => chapter.VolumeId);
+
+        modelBuilder.Entity<User>()
+            .HasIndex(q => q.Tag)
+            .IsUnique();
 
         modelBuilder.Entity<User>()
             .HasOne(user => user.TranslationTeamOwned)
