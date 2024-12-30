@@ -13,12 +13,12 @@ public class BaseService<T>(IBaseRepository<T> baseRepository) : IBaseService<T>
         return baseRepository.GetAll();
     }
 
-    public async Task<T> GetByIdAsync(int id)
+    public async Task<T> GetByIdAsync(Guid id)
     {
         return await baseRepository.GetByIdAsync(id);
     }
 
-    public async Task<T> GetByIdAsync(int id, params Expression<Func<T, object>>[] includes)
+    public async Task<T> GetByIdAsync(Guid id, params Expression<Func<T, object>>[] includes)
     {
         return await baseRepository.GetByIdAsync(id, includes);
     }
@@ -43,7 +43,7 @@ public class BaseService<T>(IBaseRepository<T> baseRepository) : IBaseService<T>
         await baseRepository.UpdateRangeAsync(entities);
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task DeleteAsync(Guid id)
     {
         await baseRepository.DeleteAsync(id);
     }

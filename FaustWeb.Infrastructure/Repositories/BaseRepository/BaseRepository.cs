@@ -22,7 +22,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
             .AsNoTracking();
     }
 
-    public async Task<T> GetByIdAsync(int id)
+    public async Task<T> GetByIdAsync(Guid id)
     {
         var entity = await dbSet
              .AsQueryable()
@@ -33,7 +33,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
         return entity;
     }
 
-    public async Task<T> GetByIdAsync(int id, params Expression<Func<T, object>>[] includes)
+    public async Task<T> GetByIdAsync(Guid id, params Expression<Func<T, object>>[] includes)
     {
         var query = dbSet
             .AsQueryable()
@@ -51,7 +51,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
 
     public async Task<T> AddAsync(T entity)
     {
-        var date = DateTime.Now;
+        var date = DateTime.UtcNow;
         entity.CreatedDate = date;
         entity.UpdatedDate = date;
 
@@ -63,7 +63,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
 
     public async Task<IEnumerable<T>> AddRangeAsync(IEnumerable<T> entities)
     {
-        var date = DateTime.Now;
+        var date = DateTime.UtcNow;
         foreach (var entity in entities)
         {
             entity.CreatedDate = date;
@@ -78,7 +78,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
 
     public async Task UpdateAsync(T entity)
     {
-        entity.UpdatedDate = DateTime.Now;
+        entity.UpdatedDate = DateTime.UtcNow;
 
         dbSet.Update(entity);
         await _context.SaveChangesAsync();
@@ -86,7 +86,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
 
     public async Task UpdateRangeAsync(IEnumerable<T> entities)
     {
-        var date = DateTime.Now;
+        var date = DateTime.UtcNow;
         foreach (var entity in entities)
         {
             entity.UpdatedDate = date;
@@ -96,7 +96,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
         await _context.SaveChangesAsync();
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task DeleteAsync(Guid id)
     {
         var entity = await GetByIdAsync(id);
 

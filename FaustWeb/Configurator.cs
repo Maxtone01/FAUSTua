@@ -1,6 +1,7 @@
 ﻿using FaustWeb.Application.Services.AuthService;
 using FaustWeb.Application.Services.EmailService;
 using FaustWeb.Domain.DTO.Email;
+using FaustWeb.Domain.Entities;
 using FaustWeb.Infrastructure;
 using FaustWeb.SeedData.SeedUsers;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -35,8 +36,8 @@ public static class Configurator
 
     public static void ConfigureIdentity(this IServiceCollection services)
     {
-        services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddRoles<IdentityRole>()
+        services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole<Guid>>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 

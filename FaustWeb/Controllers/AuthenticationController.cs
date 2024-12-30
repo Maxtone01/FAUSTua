@@ -57,9 +57,10 @@ public class AuthenticationController(IAuthService authService) : Controller
     [HttpGet("reset-password")]
     public IActionResult ResetPassword([FromQuery] string token, [FromQuery] string email)
     {
-        var model = new ResetPasswordDto 
-        { 
-            Token = token, Email = email 
+        var model = new ResetPasswordDto
+        {
+            Token = token,
+            Email = email
         };
 
         return View(model);
@@ -72,12 +73,12 @@ public class AuthenticationController(IAuthService authService) : Controller
         {
             return View(resetPasswordDto);
         }
-        
+
         var result = await authService.ResetPassword(resetPasswordDto);
 
         if (result.Any())
         {
-            foreach(var error in result)
+            foreach (var error in result)
             {
                 ModelState.AddModelError(error, error);
             }

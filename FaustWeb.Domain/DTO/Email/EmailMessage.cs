@@ -15,8 +15,8 @@ public class EmailMessage
         Content = content;
     }
 
-    public EmailMessage(IEnumerable<string> to, 
-        string subject, 
-        string template, 
+    public EmailMessage(IEnumerable<string> to,
+        string subject,
+        string template,
         params string[] parameters) : this(to, subject, string.Format(template, parameters)) { }
 }
